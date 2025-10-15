@@ -697,15 +697,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4712979b659ec1d4ba1e21705609fce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 7
-  groundDrag: 4
-  airMultiplier: 0.4
+  walkSpeed: 5
+  runSpeed: 9
+  crouchSpeed: 2.5
+  acceleration: 10
+  airControl: 0.3
   jumpForce: 4
   jumpCooldown: 0.25
+  groundDrag: 4
+  airDrag: 0.4
   playerHeight: 1.8
-  Ground:
+  groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  crouchHeight: 0.8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
