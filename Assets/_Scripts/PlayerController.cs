@@ -4,20 +4,30 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 7f;
-    public float groundDrag = 4f;
-    public float airMultiplier = 0.4f;
+    
+    
 
     [Header("Jump Settings")]
     public float jumpForce = 4f;
     public float jumpCooldown = 0.25f;
     private bool readyToJump = true;    
 
-    [Header("Ground Check")]
+    [Header("Physics Setttings")]
     public float playerHeight = 1.8f;
+    public float groundDrag = 6f;
+    public float airDrag = 0.4f;
+
     public LayerMask Ground;
     private bool grounded;
 
+    [Header("Crouch Settings")]
+    public float crouchHeight = 0.8f;
+    private float originalHeight;
+    private bool isCrouching;
+
+
     private Rigidbody rb;
+    //private Cap
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
@@ -63,7 +73,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Force);
 
         else
-            rb.AddForce(moveDirection * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection * moveSpeed * 10f * airDrag, ForceMode.Force);
     }
 
 
