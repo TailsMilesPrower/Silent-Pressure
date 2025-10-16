@@ -701,17 +701,19 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 9
   crouchSpeed: 2.5
-  acceleration: 10
+  accelerationTime: 0.1
+  decelerationTime: 0.1
   airControl: 0.3
   jumpForce: 4
   jumpCooldown: 0.25
-  groundDrag: 4
-  airDrag: 0.4
   playerHeight: 1.8
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   crouchHeight: 0.8
+  playerCamera: {fileID: 330585545}
+  lookSpeed: 2
+  lookXLimit: 45
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
