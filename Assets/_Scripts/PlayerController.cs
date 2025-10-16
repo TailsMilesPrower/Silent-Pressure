@@ -43,9 +43,12 @@ public class PlayerController : MonoBehaviour
     
     private float horizontalInput;
     private float verticalInput;
+    private float targetSpeed;
     private float currentSpeed;
-    private Vector3 currentVelocity;
-    private Vector3 currentMoveVelocity;
+    private bool running;
+
+    private Vector3 smoothVelocity;
+    private Vector3 smoothRef;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -84,7 +87,20 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // Running
-        bool running = Input.GetKey(KeyCode.LeftShift);
+        running = Input.GetKey(KeyCode.LeftShift) && !isCrouching && (horizontalInput != 0 || verticalInput != 0);
+
+        if (isCrouching)
+        {
+            targetSpeed = crouchSpeed;
+        }
+        else if (running)
+        {
+            targetSpeed = runSpeed;
+        }
+        else
+        {
+            targetSpeed = walkSpeed;
+        }
 
         // Crouching
         if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
@@ -97,18 +113,7 @@ public class PlayerController : MonoBehaviour
             StopCrouch();
         }
 
-        if (isCrouching)
-        {
-            currentSpeed = crouchSpeed;
-        }
-        else if (running && grounded)
-        {
-            currentSpeed = runSpeed;
-        }
-        else
-        {
-            currentSpeed = walkSpeed;
-        }
+        
 
         // Jumping
         if (Input.GetKey(KeyCode.Space) && readyToJump && grounded)
@@ -122,14 +127,18 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 targetDir = (transform.forward * verticalInput + transform.right * horizontalInput).normalized;
-        Vector3 targetVelocity = targetDir * currentSpeed;
+        Vector3 moveDir = (transform.forward * verticalInput + transform.right * horizontalInput).normalized;
 
-        float smoothTime = targetDir.magnitude > 0.1f ? accelerationTime : decelerationTime;
-        currentVelocity = Vector3.SmoothDamp(currentVelocity, targetVelocity,ref currentMoveVelocity, smoothTime);
+        //float speedChangeRate = running ? accelerationTime * 0.5f : accelerationTime;
+        float smoothTime = moveDir.magnitude > 0.1f ? accelerationTime : decelerationTime;
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.fixedDeltaTime / smoothTime);
+
+        Vector3 targetVelocity = moveDir * currentSpeed;
+
+        smoothVelocity = Vector3.SmoothDamp(smoothVelocity, targetVelocity, ref smoothRef, smoothTime);
 
         Vector3 velocity = rb.linearVelocity;
-        Vector3 moveVelocity = currentVelocity;
+        Vector3 moveVelocity = smoothVelocity;
         //Vector3 horizontalVelocity = new Vector3(rb.angularVelocity.x, 0f, rb.angularVelocity.z);
         //Vector3 currentVelocity = new Vector3(rb.angularVelocity.x, 0f, rb.angularVelocity.z);
         //Vector3 velocityChange = (targetVelocity - currentVelocity);
