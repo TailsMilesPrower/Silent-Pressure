@@ -11,7 +11,7 @@ public class Crowd : MonoBehaviour
     public GameObject[] AllTargets;
 
     [Header("Animations")]
-    public Animator animator;
+    //public Animator animator;
     public string movementBoolName = "IsMoving";
 
     private bool isMoving = false;
@@ -43,7 +43,7 @@ public class Crowd : MonoBehaviour
         if (currentlyMoving != isMoving)
         {
             isMoving = currentlyMoving;
-            animator.SetBool(movementBoolName, isMoving);
+            //animator.SetBool(movementBoolName, isMoving);
         }
 
     }
@@ -73,14 +73,24 @@ public class Crowd : MonoBehaviour
         if (Target == null || navMeshAgent == null) return;
 
         navMeshAgent.SetDestination(Target.transform.position);
-        animator?.SetBool(movementBoolName, false);
+        //animator?.SetBool(movementBoolName, false);
         isMoving = false;
 
     }
 
     private void IgnorePlayerCollision()
     {
-        //GameObject player = GameObject 
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        if (player == null) return;
+
+        Collider playerCollider = player.GetComponent<Collider>();
+        Collider myCollider = GetComponent<Collider>();
+
+        if (playerCollider != null && myCollider != null)
+        {
+            Physics.IgnoreCollision(myCollider, playerCollider, true);
+        }
+
     } 
 
 
