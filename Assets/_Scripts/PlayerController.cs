@@ -35,7 +35,13 @@ public class PlayerController : MonoBehaviour
     public Camera playerCamera;
     public float lookSensitivity = 2f;
     public float lookXLimit = 45f;
-    private float rotationX = 0; 
+    private float rotationX = 0;
+
+    [Header("Sprint FOV Settings")]
+    public float normalFOV = 70f;
+    public float sprintFOV = 85f;
+    public float fovSmoothTime = 0.15f;
+    private float fovVelocity;
 
     private Rigidbody rb;
     private CapsuleCollider col;
@@ -74,6 +80,7 @@ public class PlayerController : MonoBehaviour
         HandleInput();
         //HandleDrag();
         HandleCamera();
+        HandleFOV();
     }
 
     void FixedUpdate()
@@ -251,6 +258,15 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
         //transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSensitivity, 0);
+    }
+
+    private void HandleFOV()
+    {
+        if(!playerCamera) return;
+
+        float targetFOV = (running && !isCrouching) ? sprintFOV : normalFOV;
+        float newFOV = Mathf.SmoothDamp(playerCamera.fieldOfView, targetFOV, ref fovVelocity, fovSmoothTime);
+        playerCamera.fieldOfView = newFOV;
     }
 
 }
