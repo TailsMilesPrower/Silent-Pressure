@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3008786734467099373}
   - component: {fileID: 8466143643850715131}
   - component: {fileID: 9122518632508881312}
-  m_Layer: 0
-  m_Name: Main Camera
+  m_Layer: 7
+  m_Name: Player Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,8 @@ GameObject:
   - component: {fileID: 5424208953277026309}
   - component: {fileID: 4033122960968230924}
   - component: {fileID: 1263673661184557171}
-  m_Layer: 0
+  - component: {fileID: 5599181752906228570}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,3 +309,24 @@ MonoBehaviour:
   playerCamera: {fileID: 3008786734467099373}
   lookSensitivity: 2
   lookXLimit: 45
+--- !u!114 &5599181752906228570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5811414865932062900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8696d0790658b4088dc16d91728840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StressMeter
+  needle: {fileID: 0}
+  anxiety: 0
+  anxietyIncreaseRate: 10
+  anxietyDecreaseRate: 15
+  minAngle: 90
+  maxAngle: -90
+  stressing: 0
+  calming: 0
+  stable: 0

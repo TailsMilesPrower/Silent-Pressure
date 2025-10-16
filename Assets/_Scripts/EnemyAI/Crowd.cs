@@ -16,10 +16,16 @@ public class Crowd : MonoBehaviour
 
     private bool isMoving = false;
 
+    [Header("Collision Settings")]
+    public string playerTag = "Player";
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //GetComponent<Animator>().SetInteger("Mode", 1);
+
+        IgnorePlayerCollision();
+
         FindTarget();
         MoveToTarget();
     }
@@ -71,6 +77,11 @@ public class Crowd : MonoBehaviour
         isMoving = false;
 
     }
+
+    private void IgnorePlayerCollision()
+    {
+        //GameObject player = GameObject 
+    } 
 
 
 }
