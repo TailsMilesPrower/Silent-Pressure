@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lyubo.unity
     guid: 67e42d71095d7714999833f5a37262b5
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: f9bbbfa879f19df408f82adda4f0bee4
+  - enabled: 1
+    path: Assets/Scenes/Level01_TrainLevel.unity
+    guid: adb8a48df38d44643bcac5e781bb214e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

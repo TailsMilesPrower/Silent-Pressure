@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class StressMeter : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class StressMeter : MonoBehaviour
     public bool calming = false;    // Decrese Stress
     public bool stable = false;     // Maybe will use it for something later
 
+    [Header("Game Over Settings")]
+    public string gameOverSceneName = "GameOver";
+
     void Update()
     {
         // Toggles => ADD / REMOVE 
@@ -35,6 +39,7 @@ public class StressMeter : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
             calming = !calming;
 
+        // Stress Logic
         // Stressing priority over calming
         // stressing = true & calming = true   => stress +
         // stressing = true & calming = false  => stress +
@@ -55,5 +60,11 @@ public class StressMeter : MonoBehaviour
         float t = anxiety / 100f;
         float angle = Mathf.Lerp(minAngle, maxAngle, t);
         needle.localRotation = Quaternion.Euler(0, 0, angle);
+
+        //Game Over
+        if (anxiety >= 100f)
+        {
+            SceneManager.LoadScene(gameOverSceneName);
+        }
     }
 }
