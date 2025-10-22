@@ -1836,7 +1836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b2f71884631b24eb9284c68335fa7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeCollider
-  SceneName: ComingSoon
+  sceneName: Upgrades
+  sceneBuildIndex: -1
   targetTag: Player
 --- !u!1 &1778786718
 GameObject:
