@@ -6,6 +6,11 @@ public class MainMenu : MonoBehaviour
     public void startGame()
     {
         SceneManager.LoadScene("Level01_TrainLevel");
+        if (PlayerStats.Instance != null)
+        {
+            PlayerStats.Instance.ResetStats();
+        }
+
     }
 
     public void exitGame()

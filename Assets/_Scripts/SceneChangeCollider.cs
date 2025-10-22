@@ -11,7 +11,7 @@ public class SceneChangeCollider : MonoBehaviour
     {
         if (other.CompareTag(targetTag))
         {
-            SceneManager.LoadScene("ComingSoon");
+            SceneManager.LoadScene("Upgrades");
         }
     }
 

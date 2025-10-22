@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 4033122960968230924}
   - component: {fileID: 1263673661184557171}
   - component: {fileID: 5599181752906228570}
+  - component: {fileID: 3553513766081048260}
   - component: {fileID: 307963889831497743}
   m_Layer: 7
   m_Name: Player
@@ -310,6 +311,9 @@ MonoBehaviour:
   playerCamera: {fileID: 3008786734467099373}
   lookSensitivity: 2
   lookXLimit: 45
+  normalFOV: 70
+  sprintFOV: 85
+  fovSmoothTime: 0.15
 --- !u!114 &5599181752906228570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +335,19 @@ MonoBehaviour:
   stressing: 0
   calming: 0
   stable: 0
+  gameOverSceneName: GameOver
+--- !u!114 &3553513766081048260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5811414865932062900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af2f7eb0aec0e94ba25467d03f7443f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeApplier
 --- !u!208 &307963889831497743
 NavMeshObstacle:
   m_ObjectHideFlags: 0
