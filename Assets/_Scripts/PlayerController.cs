@@ -68,8 +68,8 @@ public class PlayerController : MonoBehaviour
 
         originalHeight = col.height;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     // Update is called once per frame

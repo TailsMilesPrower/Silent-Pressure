@@ -4880,7 +4880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeCollider
   sceneName: Upgrades
-  sceneBuildIndex: -1
   targetTag: Player
 --- !u!1 &1606521262
 GameObject:
@@ -5024,8 +5023,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   defaultWalkSpeed: 30
   defaultRunSpeed: 50
+  defaultCrouchSpeed: 2.5
   walkSpeed: 0
   runSpeed: 0
+  crouchSpeed: 0
+  upgradesVisited: 0
 --- !u!4 &1607198081
 Transform:
   m_ObjectHideFlags: 0

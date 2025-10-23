@@ -18,9 +18,11 @@ public class UpgradeApplier : MonoBehaviour
 
         var walkSpeedField = player.GetType().GetField("walkSpeed");
         var runSpeedField = player.GetType().GetField("runSpeed");
+        var crouchSpeedField = player.GetType().GetField("crouchSpeed");
 
         if (walkSpeedField != null) walkSpeedField.SetValue(player, PlayerStats.Instance.walkSpeed);
-        if (runSpeedField != null) walkSpeedField.SetValue(player, PlayerStats.Instance.walkSpeed);
+        if (runSpeedField != null) runSpeedField.SetValue(player, PlayerStats.Instance.runSpeed);
+        if (crouchSpeedField != null) crouchSpeedField.SetValue(player, PlayerStats.Instance.crouchSpeed);
     }
 
     // Update is called once per frame

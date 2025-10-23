@@ -7,10 +7,15 @@ public class PlayerStats : MonoBehaviour
     [Header("Default Stats")]
     public float defaultWalkSpeed = 30f;
     public float defaultRunSpeed = 50f;
+    public float defaultCrouchSpeed = 2.5f;
 
     [Header("Current Stats")]
     public float walkSpeed;
     public float runSpeed;
+    public float crouchSpeed;
+
+    [Header("Progression")]
+    public int upgradesVisited = 0;
 
     private void Awake()
     {
@@ -31,6 +36,9 @@ public class PlayerStats : MonoBehaviour
     {
         walkSpeed = defaultWalkSpeed;
         runSpeed = defaultRunSpeed;
+        crouchSpeed = defaultCrouchSpeed;
+
+        upgradesVisited = 0;
     }
 
     public void ApplyUpgrade(string upgradeType)
@@ -40,6 +48,8 @@ public class PlayerStats : MonoBehaviour
             case ("Increase Walk Speed") : walkSpeed += 10f; 
                 break;
             case ("Increase Run Speed") : runSpeed += 10f;
+                break;
+            case ("Increase Crouch Speed") : crouchSpeed += 10f;
                 break;
             default: Debug.LogWarning("Unknown upgrade type: " + upgradeType);
                 break;

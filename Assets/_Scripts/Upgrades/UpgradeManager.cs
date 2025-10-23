@@ -12,10 +12,16 @@ public class UpgradeManager : MonoBehaviour
     public TextMeshProUGUI upgradeText1;
     public TextMeshProUGUI upgradeText2;
 
+    [Header("Level Settings")]
+    public int totalLevels = 10;
+    public string levelPrefix = "Level";
+    public string endSceneName = "ComingSoon";
+
     private List<string> availableUpgrades = new List<string>()
     {
         "Increase Walk Speed",
-        "Increase Run Speed"
+        "Increase Run Speed",
+        "Increase Crouch Speed"
     };
 
     private string selectedUpgrade1;
@@ -47,12 +53,59 @@ public class UpgradeManager : MonoBehaviour
 
     public void ApplyUpgrade(string upgradeType)
     {
-        if (PlayerStats.Instance != null)
+        if (PlayerStats.Instance == null)
         {
-            PlayerStats.Instance.ApplyUpgrade(upgradeType);
+            Debug.LogWarning("No PlayerStats found in scene");
         }
 
-        SceneManager.LoadScene("Level02_TestLevel");
+        PlayerStats.Instance.ApplyUpgrade(upgradeType);
+        PlayerStats.Instance.upgradesVisited++;
+        LoadNextLevel();
+
+        //SceneManager.LoadScene("Level02_TestLevel");
+    }
+
+    void LoadNextLevel()
+    {
+        int visitCount = PlayerStats.Instance.upgradesVisited;
+        
+        if (visitCount <= totalLevels - 1)
+        {
+            string nextLevelIndex = (visitCount + 1).ToString("00");
+            string nextSceneName = FindSceneByPrefix(levelPrefix + nextLevelIndex + "_");
+            
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                Debug.Log("Loading next scene: " + nextSceneName);
+                SceneManager.LoadScene(nextSceneName);
+            }
+            else
+            {
+                Debug.LogWarning("No scene for prefix found: " + levelPrefix + nextLevelIndex + "_");
+                SceneManager.LoadScene(endSceneName);
+            }
+
+        }
+        else
+        {
+            SceneManager.LoadScene(endSceneName);
+        }
+    }
+
+    string FindSceneByPrefix(string prefix)
+    {
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        for (int i = 0; i < sceneCount;  i++)
+        {
+            string path = SceneUtility.GetScenePathByBuildIndex(i);
+            string sceneName = System.IO.Path.GetFileNameWithoutExtension(path);
+            if (sceneName.StartsWith(prefix))
+            {
+                return sceneName;
+            }
+        }
+
+        return null;
     }
 
     // Update is called once per frame
