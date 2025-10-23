@@ -56,11 +56,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 smoothVelocity;
     private Vector3 smoothRef;
 
+    private PlayerStamina stamina;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = rb.GetComponent<CapsuleCollider>();
+        stamina = GetComponent<PlayerStamina>();
 
         rb.freezeRotation = true;
         rb.useGravity = true;
@@ -94,7 +97,28 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // Running
-        running = Input.GetKey(KeyCode.LeftShift) && !isCrouching && (horizontalInput != 0 || verticalInput != 0);
+        bool sprintPressed = Input.GetKey(KeyCode.LeftShift);
+        bool hasMovementInput = (horizontalInput != 0 || verticalInput != 0);
+        bool canSprint = !isCrouching && hasMovementInput;
+
+        //running = Input.GetKey(KeyCode.LeftShift) && !isCrouching && (horizontalInput != 0 || verticalInput != 0);
+        bool staminaAllowsSprint = true;
+        if (stamina != null) staminaAllowsSprint = !(stamina.IsExhausted());
+
+        running = sprintPressed && canSprint && staminaAllowsSprint;
+
+        if (stamina != null)
+        {
+            if (running)
+            {
+                stamina.SetSprinting(true);
+                stamina.Drain(Time.deltaTime);
+            }
+            else
+            {
+                stamina.SetSprinting(false);
+            }
+        }
 
         if (isCrouching)
         {
@@ -103,6 +127,7 @@ public class PlayerController : MonoBehaviour
         else if (running)
         {
             targetSpeed = runSpeed;
+            stamina.Drain(Time.deltaTime);
         }
         else
         {
@@ -138,6 +163,7 @@ public class PlayerController : MonoBehaviour
 
         //float speedChangeRate = running ? accelerationTime * 0.5f : accelerationTime;
         float smoothTime = moveDir.magnitude > 0.1f ? accelerationTime : decelerationTime;
+        if (smoothTime <= 0f) smoothTime = 0.01f;
         currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.fixedDeltaTime / smoothTime);
 
         Vector3 targetVelocity = moveDir * currentSpeed;
@@ -238,6 +264,8 @@ public class PlayerController : MonoBehaviour
         col.height = crouchHeight;
         transform.position = new Vector3(transform.position.x, transform.position.y - (originalHeight - crouchHeight) / 2f, transform.position.z);
         isCrouching = true;
+
+        if (stamina != null) stamina.SetSprinting(false);
     }
 
     private void StopCrouch()

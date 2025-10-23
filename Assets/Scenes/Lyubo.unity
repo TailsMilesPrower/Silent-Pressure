@@ -542,6 +542,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111988964685273415, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: playerStamina
+      value: 
+      objectReference: {fileID: 1350077605}
     - target: {fileID: 2423445466623526556, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -662,6 +666,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 178616751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1350077605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3912376654725408618, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
+  m_PrefabInstance: {fileID: 809187539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851e506eaa2442c4fa4fe0f29e207f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStamina
 --- !u!1 &1510053604
 GameObject:
   m_ObjectHideFlags: 0
