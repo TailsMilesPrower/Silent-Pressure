@@ -298,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   walkSpeed: 30
   runSpeed: 50
-  crouchSpeed: 2.5
+  crouchSpeed: 7.5
   accelerationTime: 0.1
   decelerationTime: 0.1
   airControl: 0.3
@@ -328,10 +328,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStamina
   maxStamina: 100
-  currentStamina: 0
   staminaDrainRate: 25
   staminaRegenRate: 15
   regenDelay: 1.5
+  currentStamina: 0
 --- !u!114 &5599181752906228570
 MonoBehaviour:
   m_ObjectHideFlags: 0

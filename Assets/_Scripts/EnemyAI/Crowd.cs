@@ -65,7 +65,7 @@ public class Crowd : MonoBehaviour
         Target = AllTargets[Random.Range(0, AllTargets.Length)];
         Target.transform.tag = "Untagged";
 
-        //navMeshAgent.destination = Target.transform.position;
+        navMeshAgent.destination = Target.transform.position;
     }
 
     public void MoveToTarget()
