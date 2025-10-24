@@ -21,7 +21,8 @@ public class UpgradeManager : MonoBehaviour
     {
         "Increase Walk Speed",
         "Increase Run Speed",
-        "Increase Crouch Speed"
+        "Increase Crouch Speed",
+        "Increase Stamina Limit"
     };
 
     private string selectedUpgrade1;

@@ -8,11 +8,13 @@ public class PlayerStats : MonoBehaviour
     public float defaultWalkSpeed = 30f;
     public float defaultRunSpeed = 50f;
     public float defaultCrouchSpeed = 2.5f;
+    public float defaultStaminaLimit = 100f;
 
     [Header("Current Stats")]
     public float walkSpeed;
     public float runSpeed;
     public float crouchSpeed;
+    public float staminaLimit;
 
     [Header("Progression")]
     public int upgradesVisited = 0;
@@ -37,6 +39,7 @@ public class PlayerStats : MonoBehaviour
         walkSpeed = defaultWalkSpeed;
         runSpeed = defaultRunSpeed;
         crouchSpeed = defaultCrouchSpeed;
+        staminaLimit = defaultStaminaLimit;
 
         upgradesVisited = 0;
     }
@@ -50,6 +53,8 @@ public class PlayerStats : MonoBehaviour
             case ("Increase Run Speed") : runSpeed += 10f;
                 break;
             case ("Increase Crouch Speed") : crouchSpeed += 10f;
+                break;
+            case ("Increase Stamina Limit") : staminaLimit += 25f;
                 break;
             default: Debug.LogWarning("Unknown upgrade type: " + upgradeType);
                 break;
