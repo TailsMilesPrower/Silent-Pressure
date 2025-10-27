@@ -2286,6 +2286,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3932669661481464665, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: playerStamina
+      value: 
+      objectReference: {fileID: 2033772896}
     - target: {fileID: 4591057045080049569, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -5032,9 +5036,11 @@ MonoBehaviour:
   defaultWalkSpeed: 30
   defaultRunSpeed: 50
   defaultCrouchSpeed: 2.5
+  defaultStaminaLimit: 100
   walkSpeed: 0
   runSpeed: 0
   crouchSpeed: 0
+  staminaLimit: 0
   upgradesVisited: 0
 --- !u!4 &1607198081
 Transform:
