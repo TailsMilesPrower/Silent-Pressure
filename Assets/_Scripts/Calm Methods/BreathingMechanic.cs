@@ -13,7 +13,7 @@ public class BreathingMechanic : MonoBehaviour
     [Header("Gameplay Settings")]
     public int requiredPresses = 10;
     public float maxTime = 6f;
-    public float stressReductionTime = 3f;
+    public float stressReductionTime = 1.5f;
 
     private int currentPresses = 0;
     private float timer = 0f;
@@ -87,7 +87,7 @@ public class BreathingMechanic : MonoBehaviour
 
         if (currentPresses >= requiredPresses)
         {
-
+            EndBreathing(true);
         }
 
     }
@@ -95,6 +95,26 @@ public class BreathingMechanic : MonoBehaviour
     void EndBreathing(bool success)
     {
         active = false;
+        if (breathingUI) breathingUI.SetActive(false);
+        if (playerController) playerController.enabled = true;
+
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
+        if (stressMeter)
+        {
+            if (success)
+            {
+                StartCoroutine(CalmRoutine());
+            }
+        }
+    }
+
+    System.Collections.IEnumerator CalmRoutine()
+    {
+        stressMeter.calming = true;
+        yield return new WaitForSeconds(stressReductionTime);
+        stressMeter.calming = false;
     }
 
 }
