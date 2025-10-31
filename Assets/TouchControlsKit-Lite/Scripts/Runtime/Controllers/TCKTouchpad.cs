@@ -26,6 +26,9 @@ namespace TouchControlsKit
         // Update Position
         protected override void UpdatePosition( Vector2 touchPos )
         {
+            //I added this to prevent snapping when inactive
+            if (!gameObject.activeInHierarchy) return;
+
             if( !axisX.enabled && !axisY.enabled )
                 return;
 
@@ -95,7 +98,10 @@ namespace TouchControlsKit
                 UpdatePosition( pointerData.position );
                 StopCoroutine( "UpdateEndPosition" );
                 StartCoroutine( "UpdateEndPosition", pointerData.position );
-            }            
+            }
+
+            // I added this check
+            if (gameObject.activeInHierarchy) StartCoroutine("UpdateEndPosition", pointerData.position);
         }
 
 

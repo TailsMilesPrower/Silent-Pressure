@@ -240,5 +240,21 @@ namespace TouchControlsKit
             UpdatePosition( pointerData.position );
             ControlReset();
         }
+
+        // I added this so UnifiedInput has access
+        public void SetAxes(Vector2 input)
+        {
+            if (!gameObject.activeInHierarchy) return;
+
+            Vector2 clamped = Vector2.ClampMagnitude(input, 1f);
+
+            if (joystickImage != null)
+            {
+                joystickImage.rectTransform.anchoredPosition = clamped * 0.5f;
+            }
+
+            axisX.SetValue(clamped.x);
+            axisY.SetValue(clamped.y);
+        }
     };
 }

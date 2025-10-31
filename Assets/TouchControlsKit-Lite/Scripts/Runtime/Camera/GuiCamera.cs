@@ -24,10 +24,19 @@ namespace TouchControlsKit
             getCamera = GetComponent<Camera>();
         }                 
 
-        // ScreenToWorldPoint
+        /*
+        // ScreenToWorldPoint (This is the old one from the package)
         public static Vector2 ScreenToWorldPoint( Vector2 position )
         {
             return getCamera.ScreenToWorldPoint( position );
+        }
+        */
+
+        // ScreenToWorldPoint (New - my version of it)
+        public static Vector2 ScreenToWorldPoint(Vector2 position)
+        {
+            if (getCamera == null || !getCamera.enabled) return position;
+            return getCamera.ScreenToWorldPoint(position);
         }
     };
 }

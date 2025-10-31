@@ -71,8 +71,8 @@ public class PlayerController : MonoBehaviour
 
         originalHeight = col.height;
 
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -93,8 +93,20 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
+        //verticalInput = Input.GetAxisRaw("Vertical");
+        
+        UnifiedInput unified = GetComponent<UnifiedInput>();
+        if (unified)
+        {
+            horizontalInput = unified.horizontal;
+            verticalInput = unified.vertical;
+        }
+        else
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+        }   
 
         // Running
         bool sprintPressed = Input.GetKey(KeyCode.LeftShift);
@@ -278,12 +290,22 @@ public class PlayerController : MonoBehaviour
 
     private void HandleCamera()
     {
+        UnifiedInput unified = GetComponent<UnifiedInput>();
+        float mx = Input.GetAxis("Mouse X");
+        float my = Input.GetAxis("Mouse Y");
+
+        if (unified)
+        {
+            mx = unified.mouseX; 
+            my = unified.mouseY;
+        }
+
         rotationX -= Input.GetAxis("Mouse Y") * lookSensitivity;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
         float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
-        transform.Rotate(Vector3.up * mouseX);
+        transform.Rotate(Vector3.up * mx);
 
         //transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSensitivity, 0);
     }
