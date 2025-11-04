@@ -16,24 +16,73 @@ namespace TouchControlsKit
         IPointerUpHandler, IPointerDownHandler, IDragHandler, IPointerEnterHandler
     {
         GameObject prevPointerPressGO;
+        private Vector2 startTouchPos; // I added this
+        private bool started = false; // I added this
 
+        [SerializeField] private float maxRadius = 120f; // I added this
 
         // Set Visible
         protected override void OnApplyVisible()
         { }
 
+        // I added this Update(), so the touch
+        void Update()
+        {
+            if (touchDown)
+            {
+                //Vector2 touchPos = currentPosition;
+                UpdatePosition(currentPosition);
+            }
+            else if (started)
+            {
+                ControlReset();
+                started = false;
+            }
+        }
 
         // Update Position
         protected override void UpdatePosition( Vector2 touchPos )
         {
-            //I added this to prevent snapping when inactive
-            if (!gameObject.activeInHierarchy) return;
+            if (!gameObject.activeInHierarchy) return; //I added this to prevent snapping when inactive
 
-            if( !axisX.enabled && !axisY.enabled )
+            if ( !axisX.enabled && !axisY.enabled )
                 return;
 
             base.UpdatePosition( touchPos );
 
+            //This is my if statement
+            if (touchDown)
+            {
+                currentPosition = touchPos;
+                currentDirection = currentPosition - startTouchPos;
+
+                float distance = currentDirection.magnitude;
+
+                //Vector2 normalized = currentDirection.normalized;
+                //float maxRadius = 100f;
+
+                if (distance > maxRadius) currentDirection = currentDirection.normalized * maxRadius;
+                
+                float strength = Mathf.Clamp01(distance / maxRadius);
+                Vector2 final = currentDirection.normalized * strength * sensitivity;
+
+                //SetAxes(currentDirection.normalized * (distance / maxRadius) * sensitivity);
+                SetAxes(final);
+                touchPhase = ETouchPhase.Moved;
+            }
+            else
+            {
+                touchDown = true;
+                started = true;
+                touchPhase = ETouchPhase.Began;
+
+                startTouchPos = touchPos;
+                currentPosition = touchPos;
+
+                ResetAxes();
+            }
+
+            /* This is the old if(touchdown) statement
             if( touchDown )
             {
                 if( axisX.enabled ) currentPosition.x = touchPos.x;
@@ -55,6 +104,7 @@ namespace TouchControlsKit
                 UpdatePosition( touchPos );
                 ResetAxes();
             }
+            */
         }
                
         
@@ -80,7 +130,8 @@ namespace TouchControlsKit
             }
         }
 
-        // OnPointer Down
+        // OnPointer Down (this is the old version)
+        /*
         public void OnPointerDown( PointerEventData pointerData )
         {
             if( touchDown == false )
@@ -89,8 +140,26 @@ namespace TouchControlsKit
                 UpdatePosition( pointerData.position );
             }
         }
+        */
 
-        // OnDrag
+        public void OnPointerDown(PointerEventData pointerData)
+        {
+            if (!touchDown)
+            {
+                touchId = pointerData.pointerId;
+                startTouchPos = pointerData.position;
+                currentPosition = pointerData.position;
+                touchDown = true;
+                started = true;
+                touchPhase = ETouchPhase.Began;
+
+                ResetAxes();
+            }
+        }
+
+
+        // OnDrag (this is the old version)
+        /*
         public void OnDrag( PointerEventData pointerData )
         {
             if( Input.touchCount >= touchId && touchDown )
@@ -103,9 +172,29 @@ namespace TouchControlsKit
             // I added this check
             if (gameObject.activeInHierarchy) StartCoroutine("UpdateEndPosition", pointerData.position);
         }
+        */
+
+        // I made a new OnDrag
+        public void OnDrag(PointerEventData pointerData)
+        {
+            if (!touchDown) return;
+            if(pointerData.pointerId != touchId) return;
+
+            currentPosition = pointerData.position;
+            UpdatePosition(currentPosition);
+
+            /*
+            if (Input.touchCount > 0 && touchDown)
+            {
+                currentPosition = pointerData.position;
+                UpdatePosition(currentPosition);
+            }
+            */
+        }
 
 
-        // Update EndPosition
+        // Update EndPosition (This is not used)
+        /*
         private IEnumerator UpdateEndPosition( Vector2 position )
         {
             for( float el = 0f; el < .0025f; el += Time.deltaTime )
@@ -116,6 +205,7 @@ namespace TouchControlsKit
             else
                 ControlReset();
         }
+        */
 
         // OnPointer Up
         public void OnPointerUp( PointerEventData pointerData )
@@ -126,7 +216,10 @@ namespace TouchControlsKit
                 prevPointerPressGO = null;
             }
 
-            ControlReset();
+            touchDown = false; // I added this
+            touchPhase= ETouchPhase.Ended; // I added this
+            ControlReset(); 
+            started = false; // I added this
         }
     };
 }

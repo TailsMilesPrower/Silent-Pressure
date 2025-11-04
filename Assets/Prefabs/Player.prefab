@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3008786734467099373}
   - component: {fileID: 8466143643850715131}
   - component: {fileID: 9122518632508881312}
+  - component: {fileID: 4732714591460011602}
   m_Layer: 7
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -137,6 +138,23 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &4732714591460011602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574197663167012112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc9c9c4a450eab4781098b1330d836d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TouchCameraLook
+  playerBody: {fileID: 3118402980049478363}
+  joystickZone: {fileID: 0}
+  touchLookSensitivity: 0.15
+  minPitch: -60
+  maxPitch: 60
 --- !u!1 &5811414865932062900
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +172,7 @@ GameObject:
   - component: {fileID: 3912376654725408618}
   - component: {fileID: 5599181752906228570}
   - component: {fileID: 3553513766081048260}
+  - component: {fileID: 1087292230894769485}
   - component: {fileID: 307963889831497743}
   m_Layer: 7
   m_Name: Player
@@ -366,6 +385,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af2f7eb0aec0e94ba25467d03f7443f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeApplier
+--- !u!114 &1087292230894769485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5811414865932062900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4751066fb0c31f41ac8a7762ac29a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnifiedInput
+  moveJoystickName: Joystick
+  lookTouchpadName: Touchpad
+  horizontal: 0
+  vertical: 0
+  mouseX: 0
+  mouseY: 0
 --- !u!208 &307963889831497743
 NavMeshObstacle:
   m_ObjectHideFlags: 0
