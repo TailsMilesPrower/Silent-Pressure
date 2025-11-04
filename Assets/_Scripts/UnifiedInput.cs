@@ -22,13 +22,21 @@ public class UnifiedInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        float mx = Input.GetAxis("Mouse X");
-        float my = Input.GetAxis("Mouse Y");
+        float h = 0f;
+        float v = 0f;
+        float mx = 0f;
+        float my = 0f;
 
-        bool usedTCK = false;
+#if UNITY_EDITOR || UNITY_STANDALONE
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
+        mx = Input.GetAxis("Mouse X");
+        my = Input.GetAxis("Mouse Y");
 
+        //bool usedTCK = false;
+#endif
+
+#if UNITY_ANDROID
         if (TCKInput.isActive)
         {
             if (TCKInput.CheckController(moveJoystickName))
@@ -38,7 +46,7 @@ public class UnifiedInput : MonoBehaviour
                 {
                     h = joy.x;
                     v = joy.y;
-                    usedTCK = true;
+                    //usedTCK = true;
                 }
             }
 
@@ -49,12 +57,14 @@ public class UnifiedInput : MonoBehaviour
                 {
                     mx = look.x * 3f;
                     my = look.y * 3f;
-                    usedTCK = true;
+                    //usedTCK = true;
                 }
             }
 
         }
+#endif
 
+        /*
         if (!usedTCK)
         {
             h = Input.GetAxisRaw("Horizontal");
@@ -62,12 +72,13 @@ public class UnifiedInput : MonoBehaviour
             mx = Input.GetAxis("Mouse X");
             my = Input.GetAxis("Mouse Y");
         }
+        */
 
         horizontal = Mathf.Clamp(h, -1f, 1f);
         vertical = Mathf.Clamp(v, -1f, 1f);
         mouseX = mx;
         mouseY = my;
-
+        
         /*
         if (TCKInput.isActive && TCKInput.CheckController(moveJoystickName))
         {
