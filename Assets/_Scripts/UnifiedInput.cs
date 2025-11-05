@@ -40,6 +40,14 @@ public class UnifiedInput : MonoBehaviour
         float mx = 0f;
         float my = 0f;
 
+#if UNITY_STANDALONE || UNITY_EDITOR || UNITY_WEBGL
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
+        mx = Input.GetAxis("Mouse X");
+        my = Input.GetAxis("Mouse Y");
+
+        //bool usedTCK = false;
+        
         button1Pressed = Input.GetKey(KeyCode.C);
         button1Down = Input.GetKeyDown(KeyCode.C);
         button1Up = Input.GetKeyUp(KeyCode.C);
@@ -48,13 +56,7 @@ public class UnifiedInput : MonoBehaviour
         button2Down = Input.GetKeyDown(KeyCode.B);
         button2Up = Input.GetKeyUp(KeyCode.B);
 
-#if UNITY_EDITOR || UNITY_STANDALONE
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
-        mx = Input.GetAxis("Mouse X");
-        my = Input.GetAxis("Mouse Y");
 
-        //bool usedTCK = false;
 #endif
 
 #if UNITY_ANDROID

@@ -297,24 +297,45 @@ public class PlayerController : MonoBehaviour
 
     private void HandleCamera()
     {
+        if(!playerCamera) return;
+
         UnifiedInput unified = GetComponent<UnifiedInput>();
-        float mx = Input.GetAxis("Mouse X");
-        float my = Input.GetAxis("Mouse Y");
+        float mx = unified ? unified.mouseX : Input.GetAxisRaw("Mouse X");
+        float my = unified ? unified.mouseY : Input.GetAxisRaw("Mouse Y");
+
+        /* // Old method
+        float mx = 0f;
+        float my = 0f;
 
         if (unified)
         {
             mx = unified.mouseX; 
             my = unified.mouseY;
         }
+        else
+        {
+            mx = Input.GetAxis("Mouse X");
+            my = Input.GetAxis("Mouse Y");
+        }
+        */
 
         rotationX -= Input.GetAxis("Mouse Y") * lookSensitivity;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
-        float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
-        transform.Rotate(Vector3.up * mx);
+        //float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
+        transform.Rotate(Vector3.up * mx * lookSensitivity);
 
         //transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSensitivity, 0);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (Cursor.lockState != CursorLockMode.Locked) 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+#endif
+
     }
 
     private void HandleFOV()
