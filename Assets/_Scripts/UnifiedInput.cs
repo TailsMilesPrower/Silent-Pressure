@@ -7,12 +7,25 @@ public class UnifiedInput : MonoBehaviour
     public string moveJoystickName = "Joystick";
     public string lookTouchpadName = "Touchpad";
 
+    [Header("Ability Buttons")]
+    public string button1Name = "CrouchButton";
+    public string button2Name = "BreathButton";
+
     [Header("Input Output")]
     public float horizontal;
     public float vertical;
     public float mouseX;
     public float mouseY;
+
+    [Header("Button States")]
+    public bool button1Pressed;
+    public bool button1Down;
+    public bool button1Up;
     
+    public bool button2Pressed;
+    public bool button2Down;
+    public bool button2Up;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +39,14 @@ public class UnifiedInput : MonoBehaviour
         float v = 0f;
         float mx = 0f;
         float my = 0f;
+
+        button1Pressed = Input.GetKey(KeyCode.C);
+        button1Down = Input.GetKeyDown(KeyCode.C);
+        button1Up = Input.GetKeyUp(KeyCode.C);
+
+        button2Pressed = Input.GetKey(KeyCode.B);
+        button2Down = Input.GetKeyDown(KeyCode.B);
+        button2Up = Input.GetKeyUp(KeyCode.B);
 
 #if UNITY_EDITOR || UNITY_STANDALONE
         h = Input.GetAxisRaw("Horizontal");
@@ -61,6 +82,26 @@ public class UnifiedInput : MonoBehaviour
                 }
             }
 
+            if (TCKInput.CheckController(button1Name))
+            {
+                var btn = TCKInput.GetAction(button1Name, EActionEvent.Press);
+                var btnD = TCKInput.GetAction(button1Name, EActionEvent.Down);
+                var btnU = TCKInput.GetAction(button1Name, EActionEvent.Up);
+                button1Pressed = btn;
+                button1Down = btnD;
+                button1Up = btnU;
+            }
+
+            if (TCKInput.CheckController(button2Name))
+            {
+                var btn = TCKInput.GetAction(button2Name, EActionEvent.Press);
+                var btnD = TCKInput.GetAction(button2Name, EActionEvent.Down);
+                var btnU = TCKInput.GetAction(button2Name, EActionEvent.Up);
+                button2Pressed = btn;
+                button2Down = btnD;
+                button2Up = btnU;
+            }
+
         }
 #endif
 
@@ -78,6 +119,8 @@ public class UnifiedInput : MonoBehaviour
         vertical = Mathf.Clamp(v, -1f, 1f);
         mouseX = mx;
         mouseY = my;
+
+        //if (unifiedInput.button1Pressed) player.Crouch();
         
         /*
         if (TCKInput.isActive && TCKInput.CheckController(moveJoystickName))

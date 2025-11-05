@@ -866,7 +866,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 21}
-  m_LocalScale: {x: 260, y: 150, z: 20}
+  m_LocalScale: {x: 270, y: 150, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1188,6 +1188,9 @@ MonoBehaviour:
   upgradeButton2: {fileID: 2020884498}
   upgradeText1: {fileID: 501769942}
   upgradeText2: {fileID: 490145706}
+  totalLevels: 10
+  levelPrefix: Level
+  endSceneName: ComingSoon
 --- !u!1 &2020884496
 GameObject:
   m_ObjectHideFlags: 0

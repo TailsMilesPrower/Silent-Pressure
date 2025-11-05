@@ -101,11 +101,18 @@ public class PlayerController : MonoBehaviour
         {
             horizontalInput = unified.horizontal;
             verticalInput = unified.vertical;
+
+            if (unified.button1Down) StartCrouch();
+            if (unified.button1Up) StopCrouch();
+
         }
         else
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
+
+            if (Input.GetKeyDown(KeyCode.C)) StartCrouch();
+            if (Input.GetKeyUp(KeyCode.C)) StopCrouch();
         }   
 
         // Running

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5527735300998197576}
   - component: {fileID: 97592590441760970}
   m_Layer: 5
-  m_Name: fireBtn
+  m_Name: CrouchButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   updateMode: 0
   baseRect: {fileID: 7809413051471477159}
   baseImage: {fileID: 5527735300998197576}
-  identifier: fireBtn
+  identifier: CrouchButton
   baseImageColor:
     serializedVersion: 2
     rgba: 2785017855
@@ -217,6 +217,7 @@ RectTransform:
   - {fileID: 8525977375212840760}
   - {fileID: 7988706156778984182}
   - {fileID: 115331362156940781}
+  - {fileID: 6907557492689453622}
   - {fileID: 3807676387546531909}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -312,6 +313,110 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acffbf6434520634eacf0f1b48691c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TouchControlsKit.TCKOverlayFix
+--- !u!1 &1006471445058597456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6907557492689453622}
+  - component: {fileID: 2968911511354957326}
+  - component: {fileID: 1734180084344958175}
+  - component: {fileID: 863973742798527957}
+  - component: {fileID: 3645883624801211279}
+  m_Layer: 5
+  m_Name: A_BreathingUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6907557492689453622
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006471445058597456}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1207182592825365328}
+  m_Father: {fileID: 4059359464055815072}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2968911511354957326
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006471445058597456}
+  m_CullTransparentMesh: 1
+--- !u!114 &1734180084344958175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006471445058597456}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &863973742798527957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006471445058597456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3961d0c750eb4ff4081b2d0dd5d1783b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreathingUI
+  canvasGroup: {fileID: 3645883624801211279}
+  fadeDuration: 0.5
+--- !u!225 &3645883624801211279
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006471445058597456}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1238421992879343811
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +429,7 @@ GameObject:
   - component: {fileID: 5683443029313237146}
   - component: {fileID: 5798941674210644036}
   m_Layer: 5
-  m_Name: Stamina Bar_Background
+  m_Name: A_Stamina Bar_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,7 +803,7 @@ GameObject:
   - component: {fileID: 7488854496945946432}
   - component: {fileID: 7668754400442081614}
   m_Layer: 5
-  m_Name: Stamina_Text
+  m_Name: A_Stamina_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,7 +939,7 @@ GameObject:
   - component: {fileID: 1721833407608726425}
   - component: {fileID: 1507756275270801345}
   m_Layer: 5
-  m_Name: Stamina Bar_Fill
+  m_Name: A_Stamina Bar_Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1032,7 +1137,7 @@ GameObject:
   - component: {fileID: 570839294806657872}
   - component: {fileID: 2483401421683072297}
   m_Layer: 5
-  m_Name: StaminaUI
+  m_Name: A_StaminaUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1103,7 +1208,7 @@ GameObject:
   - component: {fileID: 8746093763319661577}
   - component: {fileID: 4179723975837946192}
   m_Layer: 5
-  m_Name: Needle
+  m_Name: A_Needle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1179,7 +1284,7 @@ GameObject:
   - component: {fileID: 1859573180098361428}
   - component: {fileID: 4691419794567275111}
   m_Layer: 5
-  m_Name: jumpBtn
+  m_Name: BreathButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1257,7 +1362,7 @@ MonoBehaviour:
   updateMode: 0
   baseRect: {fileID: 704095853475086616}
   baseImage: {fileID: 1859573180098361428}
-  identifier: jumpBtn
+  identifier: BreathButton
   baseImageColor:
     serializedVersion: 2
     rgba: 2785017855
@@ -1357,7 +1462,7 @@ GameObject:
   - component: {fileID: 206714834174935872}
   - component: {fileID: 7653966220567985900}
   m_Layer: 5
-  m_Name: Meter Background
+  m_Name: A_Meter Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1420,6 +1525,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7832270685133210374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207182592825365328}
+  - component: {fileID: 8841257371680133855}
+  - component: {fileID: 1777537069999815258}
+  m_Layer: 5
+  m_Name: A_Breathing Bar_Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1207182592825365328
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832270685133210374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6907557492689453622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 160}
+  m_SizeDelta: {x: 130, y: 130}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8841257371680133855
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832270685133210374}
+  m_CullTransparentMesh: 1
+--- !u!114 &1777537069999815258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832270685133210374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.3529412, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a607367d4cd7698448f8136e61700697, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 2
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7851271263867260358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1611,7 @@ GameObject:
   - component: {fileID: 7988706156778984182}
   - component: {fileID: 4032512683883250606}
   m_Layer: 5
-  m_Name: AnxietyMeterTest
+  m_Name: A_AnxietyMeterTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
