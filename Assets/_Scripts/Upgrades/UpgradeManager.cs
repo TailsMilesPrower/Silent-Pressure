@@ -35,6 +35,9 @@ public class UpgradeManager : MonoBehaviour
 
         upgradeButton1.onClick.AddListener(() => ApplyUpgrade(selectedUpgrade1));
         upgradeButton2.onClick.AddListener(() => ApplyUpgrade(selectedUpgrade2));
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void GenerateRandomUpgrades()
