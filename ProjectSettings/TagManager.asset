@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Target
+  - SafeSpot
   layers:
   - Default
   - TransparentFX

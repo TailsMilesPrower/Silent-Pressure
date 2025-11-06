@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 5599181752906228570}
   - component: {fileID: 3553513766081048260}
   - component: {fileID: 1087292230894769485}
+  - component: {fileID: 949872578585123372}
   - component: {fileID: 307963889831497743}
   m_Layer: 7
   m_Name: Player
@@ -399,10 +400,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnifiedInput
   moveJoystickName: Joystick
   lookTouchpadName: Touchpad
+  button1Name: CrouchButton
+  button2Name: BreathButton
   horizontal: 0
   vertical: 0
   mouseX: 0
   mouseY: 0
+  button1Pressed: 0
+  button1Down: 0
+  button1Up: 0
+  button2Pressed: 0
+  button2Down: 0
+  button2Up: 0
+--- !u!114 &949872578585123372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5811414865932062900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2732f3bf86000d0458f3ad9069ee592a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SafeZoneTriggerRelay
+  breathingMechanic: {fileID: 0}
 --- !u!208 &307963889831497743
 NavMeshObstacle:
   m_ObjectHideFlags: 0

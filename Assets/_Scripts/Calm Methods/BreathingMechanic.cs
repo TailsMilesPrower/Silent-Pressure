@@ -23,6 +23,9 @@ public class BreathingMechanic : MonoBehaviour
     public float maxTime = 6f;
     public float stressReductionTime = 1.5f;
 
+    [Header("Safe Zone Settings")]
+    public bool inSafeZone = false;
+
     private int currentPresses = 0;
     private float timer = 0f;
     private bool active = false;
@@ -55,6 +58,8 @@ public class BreathingMechanic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!inSafeZone) return;
+
         bool touchStart = false;
 
         if (TCKInput.isActive && !string.IsNullOrEmpty(touchButtonName))
@@ -116,6 +121,8 @@ public class BreathingMechanic : MonoBehaviour
 
     void StartBreathing()
     {
+        if (!inSafeZone) return;
+
         active = true;
         currentPresses = 0;
         timer = 0f;
@@ -251,6 +258,35 @@ public class BreathingMechanic : MonoBehaviour
         stressMeter.stressing = true;
         yield return new WaitForSeconds(stressReductionTime);
         stressMeter.stressing = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<SafeZone>())
+        {
+            Debug.Log("Entered Safe Zone!");
+            inSafeZone = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<SafeZone>())
+        {
+            Debug.Log("Exited Safe Zone!");
+            inSafeZone = false;
+            if (active) EndBreathing(false);
+        }
+    }
+
+    public void SetSafeZone(bool value)
+    {
+        inSafeZone = value;
+
+        if (!value && active)
+        {
+            EndBreathing(false);
+        }
     }
 
 }

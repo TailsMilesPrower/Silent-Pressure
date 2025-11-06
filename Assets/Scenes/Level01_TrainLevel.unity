@@ -1947,6 +1947,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516688180}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!225 &519320721 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1362222757617723981, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+  m_PrefabInstance: {fileID: 624967248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &562181164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,10 +2305,6 @@ PrefabInstance:
     - target: {fileID: 4591057045080049569, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4591057045080049569, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5067,8 +5068,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b2f71884631b24eb9284c68335fa7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeCollider
-  sceneName: Upgrades
+  sceneName: Town
+  returnSceneName: Town
   targetTag: Player
+  disableDurationOnReturn: 5
+  spawnOffset: 2
+  directionalLight: {fileID: 2116453137}
+  sunRotationPerMinute: 2
+  fadeCanvas: {fileID: 519320721}
+  fadeDuration: 1
 --- !u!1 &1606521262
 GameObject:
   m_ObjectHideFlags: 0
@@ -6073,6 +6081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 949872578585123372, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
+      propertyPath: breathingMechanic
+      value: 
+      objectReference: {fileID: 4086017832170049414}
     - target: {fileID: 1087292230894769485, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6885,6 +6897,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
+--- !u!114 &4086017832170049414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
+  m_PrefabInstance: {fileID: 4086017832170049413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb2daf8303c34a4882efbaec10d1bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreathingMechanic
 --- !u!1001 &8932241464524081009
 PrefabInstance:
   m_ObjectHideFlags: 0
