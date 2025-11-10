@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.75, g: 0.8, b: 0.85, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.0025
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -355,6 +355,95 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1778786719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &20058025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20058028}
+  - component: {fileID: 20058027}
+  - component: {fileID: 20058026}
+  m_Layer: 0
+  m_Name: Visual Effects Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &20058026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20058025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f345f366c932eea4e9b7630cb4f45b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StressFogController
+  stressMeter: {fileID: 2033772899}
+  startStressThreshold: 60
+  fullStressThreshold: 90
+  useExp2Fog: 1
+  calmFogColor: {r: 0.75, g: 0.8, b: 0.85, a: 1}
+  stressFogColor: {r: 0.25, g: 0.05, b: 0.05, a: 1}
+  calmFogDensity: 0.0025
+  maxFogDensity: 0.03
+  calmFogStart: 0
+  calmFogEnd: 300
+  stressFogStart: 5
+  stressFogEnd: 75
+  smoothSpeed: 1.5
+--- !u!114 &20058027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20058025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e927e61832a1914cb1740105cc2c0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StressVisualEffects
+  stressMeter: {fileID: 2033772899}
+  postProcessVolume: {fileID: 936094641}
+  virtualCamera: {fileID: 0}
+  vignetteTreshold: 60
+  extremeStressTreshold: 80
+  smoothSpeed: 5
+  maxChromaticIntensity: 0.8
+  normalVignette: 0.3
+  maxVignette: 0.5
+  calmVignetteColor: {r: 0, g: 0, b: 0, a: 1}
+  stressedVignetteColor: {r: 0.40251565, g: 0, b: 0, a: 1}
+  pulseSpeed: 2.5
+  minSaturation: 0.5
+  maxSaturation: 25
+  stressTintColor: {r: 1, g: 0.8, b: 0.8, a: 1}
+  calmColorFilter: {r: 0.9, g: 0.95, b: 1, a: 1}
+  maxDistortion: 0.2
+  shakeAmplitude: 1.5
+  shakeFrequency: 2
+--- !u!4 &20058028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20058025}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.83256, y: -0, z: -450.5801}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &21772142
 GameObject:
@@ -3401,6 +3490,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fdce4b3d7b14ae43ae5b97599bf7b44, type: 3}
+--- !u!1 &936094640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936094642}
+  - component: {fileID: 936094641}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &936094641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936094640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 1
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 211bb30a46c57054baddc06f6e916449, type: 2}
+--- !u!4 &936094642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936094640}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.651478, y: 2.9099772, z: 0.9294739}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965749469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5068,11 +5206,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b2f71884631b24eb9284c68335fa7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeCollider
-  sceneName: Town
+  sceneName: Upgrades
   returnSceneName: Town
   targetTag: Player
   disableDurationOnReturn: 5
   spawnOffset: 2
+  heightOffset: 0.5
   directionalLight: {fileID: 2116453137}
   sunRotationPerMinute: 2
   fadeCanvas: {fileID: 519320721}
@@ -6997,3 +7136,5 @@ SceneRoots:
   - {fileID: 3432829478564600039}
   - {fileID: 4086017832170049413}
   - {fileID: 1230700276553214397}
+  - {fileID: 20058028}
+  - {fileID: 936094642}

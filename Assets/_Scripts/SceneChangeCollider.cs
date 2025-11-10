@@ -30,11 +30,13 @@ public class SceneChangeCollider : MonoBehaviour
     [SerializeField] private CanvasGroup fadeCanvas;
     [SerializeField] private float fadeDuration = 1.0f;
 
-    private static float levelStartTime;
-    private static bool comingFromLevel = false;
     private static Vector3 savedSpawnPosition;
     private static Quaternion savedSpawnRotation;
-    
+    private static bool hasSavedSpawn = false;
+    private static string lastSceneName = "";
+    //private static bool comingFromLevel = false;
+    private static float levelStartTime;
+
     private Collider triggerCollider;
 
     /*
@@ -48,21 +50,38 @@ public class SceneChangeCollider : MonoBehaviour
     private void Awake()
     {
         triggerCollider = GetComponent<Collider>();
-        if (!triggerCollider.isTrigger) triggerCollider.isTrigger = true;
+        triggerCollider.isTrigger = true;
+
+        if (SceneManager.GetActiveScene().name == lastSceneName) return;
+        if (SceneManager.GetActiveScene().name != lastSceneName && hasSavedSpawn) StartCoroutine(DisableColliderTemporarily());
+        //if (!triggerCollider.isTrigger) triggerCollider.isTrigger = true;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private IEnumerator Start()
+    private void Start()
     {
-        if (comingFromLevel)
-        {
-            StartCoroutine(DisableColliderTemporarily());
-            MovePlayerToSavedSpawn();
-            comingFromLevel = false;
-        }
-        
         levelStartTime = Time.time;
 
+        //previously comingFromLevel was here in the if statement
+        if (hasSavedSpawn && SceneManager.GetActiveScene().name == returnSceneName)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag(targetTag);
+            if (player != null)
+            {
+                player.transform.position = savedSpawnPosition;
+                player.transform.rotation = savedSpawnRotation;
+            }
+            
+            //StartCoroutine(DisableColliderTemporarily());
+            //MovePlayerToSavedSpawn();
+            //comingFromLevel = false;
+        }
+
+        if (fadeCanvas) StartCoroutine(FadeIn());
+        lastSceneName = SceneManager.GetActiveScene().name;
+
+        /*
+        // The old IEnumerator method
         if (fadeCanvas)
         {
             fadeCanvas.gameObject.SetActive(true);
@@ -70,9 +89,18 @@ public class SceneChangeCollider : MonoBehaviour
             yield return StartCoroutine(Fade(0f));
             fadeCanvas.blocksRaycasts = false;
         }
+        */
 
         //Cursor.lockState = CursorLockMode.None;
         //Cursor.visible = true;
+    }
+
+
+    private IEnumerator DisableColliderTemporarily()
+    {
+        triggerCollider.enabled = false;
+        yield return new WaitForSeconds(disableDurationOnReturn);
+        triggerCollider.enabled = true;
     }
 
 
@@ -80,21 +108,24 @@ public class SceneChangeCollider : MonoBehaviour
     {
         if (!other.CompareTag(targetTag)) return;
 
-
+        /*
         if (!string.IsNullOrEmpty(sceneName))
         {
             SceneManager.LoadScene(sceneName);
         }
+        */
         /*
         else if (sceneBuildIndex >= 0)
         {
             SceneManager.LoadScene(sceneBuildIndex);
         }
         */
+        /*
         else
         {
             Debug.LogWarning($"{name}: No valid scene assigned to load!");
         }
+        */
 
         //savedSpawnPosition = transform.position + transform.forward * spawnOffset;
         //savedSpawnRotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
@@ -102,12 +133,13 @@ public class SceneChangeCollider : MonoBehaviour
         Vector3 forward = transform.forward;
         Collider myCollider = GetComponent<Collider>();
 
-        Vector3 frontPoint = myCollider.ClosestPoint(transform.position+ forward * 10f);
+        Vector3 frontPoint = myCollider.ClosestPoint(transform.position + forward * 10f);
         Vector3 spawnPos = frontPoint + forward * spawnOffset + Vector3.up * heightOffset;
         Quaternion spawnRot = Quaternion.LookRotation(-forward, Vector3.up);
 
         savedSpawnPosition = spawnPos;
         savedSpawnRotation = spawnRot;
+        hasSavedSpawn = true;
 
         Debug.Log($"[SceneChangeCollider] Saved spawn pos: {spawnPos} | Collider at: {transform.position}");
 
@@ -119,7 +151,7 @@ public class SceneChangeCollider : MonoBehaviour
             directionalLight.transform.Rotate(Vector3.right * rotationChange, Space.Self);
         }
 
-        comingFromLevel = SceneManager.GetActiveScene().name != returnSceneName;
+        //comingFromLevel = SceneManager.GetActiveScene().name != returnSceneName;
 
         if (fadeCanvas)
         {
@@ -135,10 +167,39 @@ public class SceneChangeCollider : MonoBehaviour
     private IEnumerator FadeAndLoad(string sceneName)
     {
         fadeCanvas.blocksRaycasts = true;
-        yield return StartCoroutine(Fade(1f));
+
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            fadeCanvas.alpha = Mathf.Lerp(0f, 1f, t / fadeDuration);
+            yield return null;
+        }
+
+        //yield return StartCoroutine(Fade(1f));
         SceneManager.LoadScene(sceneName);
     }
 
+
+    private IEnumerator FadeIn()
+    {
+        fadeCanvas.alpha = 1f;
+        fadeCanvas.blocksRaycasts = false;
+        
+        float t = 0f;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            fadeCanvas.alpha = Mathf.Lerp(1f, 0f, t / fadeDuration);
+            yield return null;
+        }
+        
+        fadeCanvas.alpha = 0f;
+    }
+
+
+    /*
     private IEnumerator Fade(float targetAlpha)
     {
         if (fadeCanvas == null) yield break;
@@ -154,14 +215,11 @@ public class SceneChangeCollider : MonoBehaviour
         }
         fadeCanvas.alpha = targetAlpha;
     }
+    */
 
-    private IEnumerator DisableColliderTemporarily()
-    {
-        triggerCollider.enabled = false;
-        yield return new WaitForSeconds(disableDurationOnReturn);
-        triggerCollider.enabled = true;
-    }
 
+
+    /*
     private void MovePlayerToSavedSpawn()
     {
         GameObject player = GameObject.FindGameObjectWithTag(targetTag);
@@ -180,6 +238,6 @@ public class SceneChangeCollider : MonoBehaviour
             Debug.LogWarning("Player not found when trying to move to spawn position!");
         }
     }
+    */
 
- 
 }
