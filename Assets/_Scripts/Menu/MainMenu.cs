@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
     public void startGame()
     {
         //Level01_TrainLevel
-        SceneManager.LoadScene("TownLevelDay");
+        SceneManager.LoadScene("Town");
         if (PlayerStats.Instance != null)
         {
             PlayerStats.Instance.ResetStats();
