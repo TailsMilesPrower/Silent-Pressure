@@ -17,9 +17,12 @@ public class PhoneMenu : MonoBehaviour
     public Vector3 hiddenScale = new Vector3(0.8f, 0.8f, 0.8f);
     public Vector3 shownScale = Vector3.one;
 
+    [Header("Player Control Reference")]
+    public PlayerController playerController;
+
     private bool isOpen = false;
     private bool isAnimating = false;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,6 +34,7 @@ public class PhoneMenu : MonoBehaviour
         }
 
         HideAllPanels();
+        SetCursorLocked(true);
     }
 
     // Update is called once per frame
@@ -53,12 +57,15 @@ public class PhoneMenu : MonoBehaviour
     {
         isAnimating = true;
         isOpen = true;
+
+        if (playerController) playerController.enabled = false;
+        SetCursorLocked(false);
+
         phoneCanvasGroup.gameObject.SetActive(true);
-        
-        float t = 0f;
         phoneCanvasGroup.interactable = true;
         phoneCanvasGroup.blocksRaycasts = true;
 
+        float t = 0f;
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
@@ -78,10 +85,13 @@ public class PhoneMenu : MonoBehaviour
         isAnimating = true;
         isOpen = false;
 
-        float t = 0f;
+        if (playerController) playerController.enabled = true;
+        SetCursorLocked(true);
+
         phoneCanvasGroup.interactable = false;
         phoneCanvasGroup.blocksRaycasts = false;
 
+        float t = 0f;
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
@@ -121,5 +131,21 @@ public class PhoneMenu : MonoBehaviour
         musicPanel?.SetActive(false);
         emailPanel?.SetActive(false);
     }
+
+    private void SetCursorLocked(bool locked)
+    {
+        if (locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState= CursorLockMode.None;
+            Cursor.visible = true;
+        }    
+
+    }
+
 
 }
