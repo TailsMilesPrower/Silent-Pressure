@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
+using System.Diagnostics;
 
 public class ListenToMusic : MonoBehaviour
 {
@@ -24,13 +26,15 @@ public class ListenToMusic : MonoBehaviour
 
     [Header("Now Playing UI")]
     public CanvasGroup nowPlayingGroup;
-    public Text nowPlayingText;
+    public TMP_Text nowPlayingText;
+    public Image songProgressFill;
     public float uiSlideTime = 0.4f;
     public float uiVisibleTime = 2f;
 
     private Coroutine shortListeningRoutine;
     private Coroutine longListeningRoutine;
     private Coroutine nowPlayingRoutine;
+    private Coroutine progressRoutine;
 
     private AudioClip[] playlist;
 
@@ -42,8 +46,10 @@ public class ListenToMusic : MonoBehaviour
         if (nowPlayingGroup)
         {
             nowPlayingGroup.alpha = 0f;
-            nowPlayingGroup.transform.localPosition = new Vector3(0f, -70f, 0f);
+            //nowPlayingGroup.transform.localPosition = new Vector3(0f, -70f, 0f);
         }
+
+        if (songProgressFill) songProgressFill.fillAmount = 0f;
 
     }
 
@@ -85,6 +91,14 @@ public class ListenToMusic : MonoBehaviour
         audioSource.clip = clip;
         audioSource.Play();
 
+        if (songProgressFill)
+        {
+            //songProgressFill.fillAmount = 0f;
+
+            if (progressRoutine != null) StopCoroutine(progressRoutine);
+
+            progressRoutine = StartCoroutine(SongProgressTimer(clip.length));
+        }
 
         if (shortListeningRoutine != null) StopCoroutine(shortListeningRoutine);
         if (longListeningRoutine != null) StopCoroutine(longListeningRoutine);
@@ -126,9 +140,9 @@ public class ListenToMusic : MonoBehaviour
         stressMeter.anxiety -= stressReductionShort;
         stressMeter.anxiety = Mathf.Clamp(stressMeter.anxiety, 0f, 100f);
 
-        //stressMeter.calming = true;
-        //yield return new WaitForSeconds(1f);
-        //stressMeter.calming = false;
+        stressMeter.calming = true;
+        yield return new WaitForSeconds(1f);
+        stressMeter.calming = false;
     }
 
     private IEnumerator LongListenTimer()
@@ -146,9 +160,31 @@ public class ListenToMusic : MonoBehaviour
         stressMeter.anxiety -= stressReductionLong;
         stressMeter.anxiety = Mathf.Clamp(stressMeter.anxiety, 0f, 100f);
 
-        //stressMeter.calming = true;
-        //yield return new WaitForSeconds(1f);
-        //stressMeter.calming = false;
+        stressMeter.calming = true;
+        yield return new WaitForSeconds(1f);
+        stressMeter.calming = false;
+    }
+
+    private IEnumerator SongProgressTimer(float songLength)
+    {
+        float t = 0f;
+
+        if (songProgressFill) songProgressFill.fillAmount = 0f;
+
+        while (audioSource.isPlaying && t < songLength)
+        {
+            t += Time.deltaTime;
+            
+            if (songProgressFill) songProgressFill.fillAmount = Mathf.Clamp01(t / songLength);
+
+            yield return null;
+        }
+
+        if (songProgressFill) songProgressFill.fillAmount = 1f;
+
+        if (nowPlayingRoutine != null) StopCoroutine(nowPlayingRoutine);
+        nowPlayingRoutine = StartCoroutine(FadeOutNowPlaying());
+
     }
 
     private void ShowNowPlaying(string text)
@@ -167,33 +203,37 @@ public class ListenToMusic : MonoBehaviour
     {
         float t = 0f;
 
-        Vector3 hiddenPos = new Vector3(0f, -70f, 0f);
-        Vector3 visiblePos = new Vector3(0f, -10f, 0f);
+        //Vector3 hiddenPos = new Vector3(0f, -70f, 0f);
+        //Vector3 visiblePos = new Vector3(0f, -10f, 0f);
 
         while (t < uiSlideTime)
         {
             t += Time.deltaTime;
             float p = t / uiSlideTime;
             nowPlayingGroup.alpha = Mathf.Lerp(0f, 1f, p);
-            nowPlayingGroup.transform.localPosition = Vector3.Lerp(hiddenPos, visiblePos, p);
+            //nowPlayingGroup.transform.localPosition = Vector3.Lerp(hiddenPos, visiblePos, p);
             yield return null;
         }
 
-        yield return new WaitForSeconds(uiVisibleTime);
+        nowPlayingGroup.alpha = 1f;
+        //yield return new WaitForSeconds(uiVisibleTime);
 
-        t = 0f;
+    }
+
+    private IEnumerator FadeOutNowPlaying()
+    {
+        float t = 0f;
         while (t < uiSlideTime)
         {
             t += Time.deltaTime;
             float p = t / uiSlideTime;
             nowPlayingGroup.alpha = Mathf.Lerp(1f, 0f, p);
-            nowPlayingGroup.transform.localPosition = Vector3.Lerp(visiblePos, hiddenPos, p);
+            //nowPlayingGroup.transform.localPosition = Vector3.Lerp(visiblePos, hiddenPos, p);
             yield return null;
         }
 
         nowPlayingGroup.alpha = 0f;
-        nowPlayingGroup.transform.localPosition = hiddenPos;
-
+        //nowPlayingGroup.transform.localPosition = hiddenPos;
     }
 
 }
