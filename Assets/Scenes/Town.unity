@@ -2043,7 +2043,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d7fc1dc3efa8e4947a4d4a3a0d4d73e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18455,7 +18455,7 @@ MonoBehaviour:
   heightOffset: 0.5
   directionalLight: {fileID: 2119639645}
   sunRotationPerMinute: 2
-  fadeCanvas: {fileID: 0}
+  fadeCanvas: {fileID: 1623125093}
   fadeDuration: 1
 --- !u!65 &700197809
 BoxCollider:
@@ -18543,7 +18543,7 @@ Transform:
   m_GameObject: {fileID: 700197807}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -27.74, y: 5, z: -234.5}
+  m_LocalPosition: {x: -29, y: 5, z: -234.5}
   m_LocalScale: {x: 20, y: 10, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25452,6 +25452,140 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930048643}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &936901973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936901978}
+  - component: {fileID: 936901977}
+  - component: {fileID: 936901976}
+  - component: {fileID: 936901975}
+  - component: {fileID: 936901974}
+  m_Layer: 0
+  m_Name: NextLevel_Library
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &936901974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936901973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b2f71884631b24eb9284c68335fa7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChangeCollider
+  sceneName: Level03_Library
+  returnSceneName: Town
+  targetTag: Player
+  disableDurationOnReturn: 5
+  spawnOffset: 1.5
+  heightOffset: 0.5
+  directionalLight: {fileID: 2119639645}
+  sunRotationPerMinute: 2
+  fadeCanvas: {fileID: 1623125093}
+  fadeDuration: 1
+--- !u!65 &936901975
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936901973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &936901976
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936901973}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &936901977
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936901973}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &936901978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936901973}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 29.6, y: 5, z: -319.5}
+  m_LocalScale: {x: 11, y: 10, z: 8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &938699090
 GameObject:
   m_ObjectHideFlags: 0
@@ -25775,7 +25909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b2f71884631b24eb9284c68335fa7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeCollider
-  sceneName: Level01_TrainLevel
+  sceneName: Level01_Train
   returnSceneName: Town
   targetTag: Player
   disableDurationOnReturn: 5
@@ -25783,7 +25917,7 @@ MonoBehaviour:
   heightOffset: 0.5
   directionalLight: {fileID: 2119639645}
   sunRotationPerMinute: 2
-  fadeCanvas: {fileID: 0}
+  fadeCanvas: {fileID: 1623125093}
   fadeDuration: 1
 --- !u!65 &953266842
 BoxCollider:
@@ -25871,8 +26005,8 @@ Transform:
   m_GameObject: {fileID: 953266840}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 23.13, y: 5, z: -156}
-  m_LocalScale: {x: 20, y: 10, z: 8}
+  m_LocalPosition: {x: 29.6, y: 5, z: -156.5}
+  m_LocalScale: {x: 11, y: 10, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -44701,6 +44835,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622969034}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!225 &1623125093 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1362222757617723981, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+  m_PrefabInstance: {fileID: 2097403901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1623469057
 GameObject:
   m_ObjectHideFlags: 0
@@ -61372,6 +61511,7 @@ SceneRoots:
   - {fileID: 313042970}
   - {fileID: 953266845}
   - {fileID: 700197812}
+  - {fileID: 936901978}
   - {fileID: 311284016}
   - {fileID: 1574139549}
   - {fileID: 1325919333}
