@@ -23,6 +23,9 @@ public class PhoneMenu : MonoBehaviour
     private bool isOpen = false;
     private bool isAnimating = false;
 
+    [Header("Music System Reference")]
+    public ListenToMusic musicSystem;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -118,6 +121,10 @@ public class PhoneMenu : MonoBehaviour
         HideAllPanels();
         musicPanel.SetActive(true);
     }
+
+    public void PlaySong1() { if (musicSystem) musicSystem.PlaySong(1); }
+    public void PlaySong2() { if (musicSystem) musicSystem.PlaySong(2); }
+    public void PlaySong3() { if (musicSystem) musicSystem.PlaySong(3); }
 
     public void OpenEmails()
     {
