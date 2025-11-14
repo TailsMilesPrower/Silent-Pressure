@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4503195570351961262}
   - component: {fileID: 3038548499425899152}
+  - component: {fileID: 5900060698412164086}
   m_Layer: 0
   m_Name: StressReliefManager
   m_TagString: Untagged
@@ -48,7 +49,37 @@ MonoBehaviour:
   progressBar: {fileID: 0}
   stressMeter: {fileID: 0}
   playerController: {fileID: 0}
+  aPrompt: {fileID: 0}
+  dPrompt: {fileID: 0}
   touchButtonName: BreathButton
   requiredPresses: 10
   maxTime: 6
   stressReductionTime: 1.5
+  inSafeZone: 0
+--- !u!114 &5900060698412164086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676239289300375360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a792a6518d597c843a7faf895b985f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ListenToMusic
+  audioSource: {fileID: 0}
+  song1: {fileID: 8300000, guid: 542355c5fd8fa5644b0cb9269c7fcfe6, type: 3}
+  song2: {fileID: 8300000, guid: 36e8d49d93382724db095adb55dfead3, type: 3}
+  song3: {fileID: 0}
+  stressMeter: {fileID: 0}
+  stressReductionShort: 2
+  stressReductionLong: 4
+  shortListeningTime: 15
+  longListeningTime: 30
+  quickMusicKey: 109
+  nowPlayingGroup: {fileID: 0}
+  nowPlayingText: {fileID: 0}
+  songProgressFill: {fileID: 0}
+  uiSlideTime: 0.4
+  uiVisibleTime: 2
