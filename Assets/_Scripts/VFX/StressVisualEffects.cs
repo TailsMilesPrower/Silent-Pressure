@@ -10,7 +10,7 @@ public class StressVisualEffects : MonoBehaviour
     [Header("References")]
     public StressMeter stressMeter;
     public Volume postProcessVolume;
-    public CinemachineVirtualCamera virtualCamera;
+    //public Camera camera;
 
     [Header("General Settings")]
     public float vignetteTreshold = 60f;
@@ -70,10 +70,11 @@ public class StressVisualEffects : MonoBehaviour
             return;
         }
 
-        if (virtualCamera != null)
-        {
-            cameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        }
+        //if (camera != null)
+        //{
+            //cameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            //cameraNoise = camera.;
+        //}
     }
 
     // Update is called once per frame

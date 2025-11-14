@@ -5478,7 +5478,7 @@ Transform:
   m_GameObject: {fileID: 235482644}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.651478, y: 2.9099772, z: 0.9294739}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16580,7 +16580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a5762aeb3bb657d43b58047aa8348cfe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e207866007c23dc479ea707278a64592, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -31845,7 +31845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -445}
+  m_AnchoredPosition: {x: 350, y: -400}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241242017
@@ -31868,6 +31868,7 @@ MonoBehaviour:
   fadeDuration: 0.3
   hiddenScale: {x: 0.8, y: 0.8, z: 0.8}
   shownScale: {x: 1, y: 1, z: 1}
+  playerController: {fileID: 800671420}
 --- !u!1001 &1243812696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33868,7 +33869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1310999870
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44536,7 +44537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 86b35efab1b6040499398962caad8b6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9c09c322a377964480832f5eacf6b8a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -49944,7 +49945,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 315669c9ffd5cd94bb8957e17e39626c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab03930303f9f7546807416bbd0f728e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -51583,7 +51584,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StressVisualEffects
   stressMeter: {fileID: 800671414}
   postProcessVolume: {fileID: 235482645}
-  virtualCamera: {fileID: 0}
   vignetteTreshold: 60
   extremeStressTreshold: 80
   smoothSpeed: 5
@@ -55198,7 +55198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ab983c418bbdd934589f617749465f68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba29ba2269cadbd47a46674c1a38700e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -56705,7 +56705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 88cbaa3fb19e12145b1eaf94ff6fc19d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfc7942ad47ec514a8cb81b18aeb7b00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
