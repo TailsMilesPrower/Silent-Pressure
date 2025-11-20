@@ -100,6 +100,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6953793830870111697}
   - component: {fileID: -8650888864853993697}
+  - component: {fileID: -2275710333232389287}
+  - component: {fileID: 9120386308319647345}
   m_Layer: 0
   m_Name: Car1 1
   m_TagString: Untagged
@@ -136,6 +138,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarMove1
   speed: 50
+--- !u!65 &-2275710333232389287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509957790541247306}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.5, y: 3, z: 11}
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &9120386308319647345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509957790541247306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ca4cb413f16764a8c37e305b1d9910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarGameOver
 --- !u!1 &3388850586008958372
 GameObject:
   m_ObjectHideFlags: 0
