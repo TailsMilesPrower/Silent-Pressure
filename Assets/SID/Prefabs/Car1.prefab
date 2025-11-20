@@ -99,6 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6953793830870111697}
+  - component: {fileID: -2973491981103878853}
   m_Layer: 0
   m_Name: Car1
   m_TagString: Untagged
@@ -122,6 +123,19 @@ Transform:
   - {fileID: 6821380072906240892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2973491981103878853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509957790541247306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71234d3e4501841428030156e84d47c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarMove
+  speed: 50
 --- !u!1 &3388850586008958372
 GameObject:
   m_ObjectHideFlags: 0
