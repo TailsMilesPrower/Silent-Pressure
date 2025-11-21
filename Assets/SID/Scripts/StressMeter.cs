@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Xasu.HighLevel;
 
 public class StressMeter : MonoBehaviour
 {
@@ -65,6 +66,7 @@ public class StressMeter : MonoBehaviour
         if (anxiety >= 100f)
         {
             SceneManager.LoadScene(gameOverSceneName);
+            CompletableTracker.Instance.Initialized("Death of Stress", CompletableTracker.CompletableType.Session);
         }
     }
 }

@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 8943554978272015543}
   - component: {fileID: 1463491008727954920}
   - component: {fileID: 1775883093095369260}
+  - component: {fileID: 4088980092261030919}
   m_Layer: 5
   m_Name: NotesPanel
   m_TagString: Untagged
@@ -704,6 +705,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4088980092261030919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510841365720753967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2b392cd62b7594583b243ac532b46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NotesAppLog
 --- !u!1 &532555969073055277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,6 +2355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7614648299501301551}
   - component: {fileID: 1238489831320075384}
+  - component: {fileID: 4999037000987426175}
   m_Layer: 5
   m_Name: PhoneMenu
   m_TagString: Untagged
@@ -2384,6 +2398,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4999037000987426175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844687540848670211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876157049c172674b905246172fbd990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhoneMenuLogger
 --- !u!1 &1852732492129360300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,6 +2904,7 @@ GameObject:
   - component: {fileID: 6066391250009582623}
   - component: {fileID: 2749078711928224603}
   - component: {fileID: 2432329540987549159}
+  - component: {fileID: 3875998445454200849}
   m_Layer: 5
   m_Name: EmailPanel
   m_TagString: Untagged
@@ -2942,6 +2969,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3875998445454200849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2849818000388795056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db4f125474150b4c89fb329c35beb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EmailAppLog
 --- !u!1 &2890525418451872139
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3609,7 @@ GameObject:
   - component: {fileID: 6379605641724737759}
   - component: {fileID: 6808206522107121738}
   - component: {fileID: 3812948451848602728}
+  - component: {fileID: 3706250071911397116}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -3634,6 +3674,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3706250071911397116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708699475045400504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3feb0002278674c44a47a9564082c752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsAppLog
 --- !u!1 &3734245374521835544
 GameObject:
   m_ObjectHideFlags: 0
@@ -4573,6 +4625,7 @@ GameObject:
   - component: {fileID: 7428480841324854149}
   - component: {fileID: 3585582431928789461}
   - component: {fileID: 2462014508551682229}
+  - component: {fileID: 180821694226072726}
   m_Layer: 5
   m_Name: HowToPlay_Box
   m_TagString: Untagged
@@ -4640,6 +4693,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &180821694226072726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929850615052627972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689dbdb12841a454c91e587dc26fa14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialLogger
 --- !u!1 &5100940536219484031
 GameObject:
   m_ObjectHideFlags: 0
@@ -7471,6 +7536,7 @@ GameObject:
   - component: {fileID: 7158447278587907251}
   - component: {fileID: 6247454496172637889}
   - component: {fileID: 6200444410230867120}
+  - component: {fileID: 3043588381458180326}
   m_Layer: 5
   m_Name: MusicPanel
   m_TagString: Untagged
@@ -7540,6 +7606,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3043588381458180326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8131576207539030268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d4ddf9121a27d42a41ba1387fa04a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicAppLog
 --- !u!1 &8262838015824799347
 GameObject:
   m_ObjectHideFlags: 0

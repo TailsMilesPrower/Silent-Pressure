@@ -1,8 +1,9 @@
+using System.Collections;
+using System.Diagnostics;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using TMPro;
-using System.Diagnostics;
+using Xasu.HighLevel;
 
 public class ListenToMusic : MonoBehaviour
 {
@@ -90,6 +91,8 @@ public class ListenToMusic : MonoBehaviour
         
         audioSource.clip = clip;
         audioSource.Play();
+
+        CompletableTracker.Instance.Initialized("listening to mp3");
 
         if (songProgressFill)
         {

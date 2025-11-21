@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Xasu.HighLevel;
 
 public class CarGameOver: MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class CarGameOver: MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            CompletableTracker.Instance.Initialized("Death of Car", CompletableTracker.CompletableType.Session);
             SceneManager.LoadScene("GameOver");
         }
     }
