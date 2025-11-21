@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
+using Xasu.HighLevel;
 
 public class EnemyLineOfSight : MonoBehaviour
 {
+    DateTime enteredTime;
+    
     private void OnTriggerEnter(Collider other)
     {
         // Make sure <StressMeter> has the name of the component if changes are made
@@ -9,6 +13,8 @@ public class EnemyLineOfSight : MonoBehaviour
         if (meter != null)
         {
             meter.stressing = true;
+            enteredTime = DateTime.Now;
+            GameObjectTracker.Instance.Interacted(transform.parent.name, GameObjectTracker.TrackedGameObject.Enemy).WithResultExtension("http://inside", true);
         }
     }
 
@@ -18,6 +24,9 @@ public class EnemyLineOfSight : MonoBehaviour
         if (meter != null)
         {
             meter.stressing = false;
+            GameObjectTracker.Instance.Interacted(transform.parent.name, GameObjectTracker.TrackedGameObject.Enemy)
+                .WithResultExtension("http://inside", false)
+                .WithDuration(enteredTime, DateTime.Now);
         }
     }
 }

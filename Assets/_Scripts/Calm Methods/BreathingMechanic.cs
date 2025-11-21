@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TouchControlsKit;
+using Xasu.HighLevel;
 
 public class BreathingMechanic : MonoBehaviour
 {
@@ -123,6 +124,8 @@ public class BreathingMechanic : MonoBehaviour
     {
         if (!inSafeZone) return;
 
+        CompletableTracker.Instance.Initialized("breathing");
+
         active = true;
         currentPresses = 0;
         timer = 0f;
@@ -221,6 +224,8 @@ public class BreathingMechanic : MonoBehaviour
     void EndBreathing(bool success)
     {
         active = false;
+
+        CompletableTracker.Instance.Completed("breathing", timer).WithSuccess(success);
         
         if (playerController) playerController.enabled = true;
         if (breathingUI) breathingUI.FadeOut(); //SetActive(false)
