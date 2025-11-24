@@ -114,6 +114,8 @@ public class PhoneMenu : MonoBehaviour
     {
         HideAllPanels();
         notesPanel.SetActive(true);
+
+        if (ObjectiveManager.Instance) ObjectiveManager.Instance.UpdateNotesUI();
     }
 
     public void OpenMusic()

@@ -52663,6 +52663,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059926590}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2070533147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2070533149}
+  - component: {fileID: 2070533148}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2070533148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070533147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580cfc04f95b0a647aa4fa439bbc94a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectiveManager
+  currentObjective: No active objective.
+  objectivePool:
+  - Find the train station.
+  - Go to the supermarket.
+  - Head to the library.
+  notesText: {fileID: 2097403903}
+--- !u!4 &2070533149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070533147}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.17335, y: 4.1996, z: -437.004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2073877059
 GameObject:
   m_ObjectHideFlags: 0
@@ -53898,6 +53948,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 510841365720753967, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1015996073823914065, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -54138,6 +54192,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 8131576207539030268, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -54148,6 +54206,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8095143594994967812, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
   m_PrefabInstance: {fileID: 2097403901}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2097403903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4488905954027221182, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+  m_PrefabInstance: {fileID: 2097403901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &2097403908 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7883535769896654616, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
@@ -55924,6 +55993,7 @@ SceneRoots:
   - {fileID: 1325919333}
   - {fileID: 166065814}
   - {fileID: 1243812696}
+  - {fileID: 2070533149}
   - {fileID: 1986880226}
   - {fileID: 235482646}
   - {fileID: 412244791}
