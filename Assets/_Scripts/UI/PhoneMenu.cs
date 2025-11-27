@@ -80,7 +80,9 @@ public class PhoneMenu : MonoBehaviour
 
         phoneCanvasGroup.alpha = 1f;
         phoneCanvasGroup.transform.localScale = shownScale;
+
         isAnimating = false;
+        
     }
 
     private IEnumerator HidePhone()
@@ -115,7 +117,7 @@ public class PhoneMenu : MonoBehaviour
         HideAllPanels();
         notesPanel.SetActive(true);
 
-        if (ObjectiveManager.Instance) ObjectiveManager.Instance.UpdateNotesUI();
+        //if (ObjectiveManager.Instance) ObjectiveManager.Instance.UpdateNotesUI();
     }
 
     public void OpenMusic()
@@ -132,6 +134,7 @@ public class PhoneMenu : MonoBehaviour
     {
         HideAllPanels();
         emailPanel.SetActive(true);
+        NotificationManager.Instance.OnPhoneOpened();
     }
 
     private void HideAllPanels()
