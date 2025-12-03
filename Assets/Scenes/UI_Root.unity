@@ -1031,7 +1031,7 @@ MonoBehaviour:
   popupCanvasGroup: {fileID: 965024177}
   popupText: {fileID: 965024176}
   fadeDuration: 0.4
-  visibleTime: 5
+  visibleTime: 100000
   notificationBadge: {fileID: 965024179}
 --- !u!1 &1558637594
 GameObject:

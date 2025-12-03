@@ -23,7 +23,7 @@ public class ListenToMusic : MonoBehaviour
     public float longListeningTime = 30f;
 
     [Header("Quick Music Setting")]
-    public KeyCode quickMusicKey = KeyCode.M;
+    private KeyCode quickMusicKey = KeyCode.M;
 
     [Header("Now Playing UI")]
     public CanvasGroup nowPlayingGroup;
