@@ -9,30 +9,33 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 4c652d21448c13c4d9ebd86231437d63
+    path: Assets/Scenes/UI_Root.unity
+    guid: e8b3f25dcfa54394d87a2853cc7b833f
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 595fd7c2286df3c439cb58ec639e1fe3
+  - enabled: 1
+    path: Assets/Scenes/Town.unity
+    guid: 0fb265a763469bd4f82809092081ce50
   - enabled: 1
     path: Assets/Scenes/Level01_Train.unity
     guid: adb8a48df38d44643bcac5e781bb214e
   - enabled: 1
     path: Assets/Scenes/Level02_Store.unity
     guid: 9d3d12d58c4c484469c405977fede8f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level03_Library.unity
     guid: b09d8c388c388b547be76eb3925bbe13
   - enabled: 0
-    path: Assets/Scenes/Level04_TestLevel.unity
-    guid: 2398adaeea328b349a5ebb0965f39f42
-  - enabled: 1
-    path: Assets/Scenes/Town.unity
-    guid: 0fb265a763469bd4f82809092081ce50
+    path: Assets/Scenes/ComingSoon.unity
+    guid: 657a9e337b0fde74dbf457e3d20a509f
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: f9bbbfa879f19df408f82adda4f0bee4
   - enabled: 1
-    path: Assets/Scenes/ComingSoon.unity
-    guid: 657a9e337b0fde74dbf457e3d20a509f
-  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 4c652d21448c13c4d9ebd86231437d63
+  - enabled: 0
     path: Assets/Scenes/Upgrades.unity
     guid: b5a6d4031ac7c1b488189bf6d7fcb710
   m_configObjects:

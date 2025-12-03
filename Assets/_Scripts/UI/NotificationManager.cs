@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class NotificationManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class NotificationManager : MonoBehaviour
     public CanvasGroup popupCanvasGroup;
     public TMP_Text popupText;
     public float fadeDuration = 0.4f;
-    public float visibleTime = 5f;
+    public float visibleTime = 100000f;
 
     [Header("Badge")]
     public GameObject notificationBadge;
@@ -26,6 +27,7 @@ public class NotificationManager : MonoBehaviour
 
     private void Awake()
     {
+        //SceneManager.sceneLoaded += OnSceneLoaded;
         if (Instance == null)
         {
             Instance = this;
@@ -37,6 +39,23 @@ public class NotificationManager : MonoBehaviour
             return;
         }
     }
+
+    /*
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RebindUI();
+    }
+
+    private void RebindUI()
+    {
+        popupCanvasGroup = GameObject.Find("NotificationPopup")?.GetComponent<CanvasGroup>();
+        popupText = GameObject.Find("Notification_Text")?.GetComponent<TMP_Text>();
+
+        notificationBadge = GameObject.Find("Notification_Badge");
+
+        audioSource = GameObject.Find("Audio Source")?.GetComponent<AudioSource>();
+    }
+    */
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,9 +75,10 @@ public class NotificationManager : MonoBehaviour
         //string email = $"New Objective Received:\n\n{objective}";
 
         //EmailManager.Instance.AddEmail(email);
+        //string key = ObjectiveManager.Instance.GetObjectiveKey();
 
-        string key = ObjectiveManager.Instance.GetObjectiveKey();
-        SendEmailForObjective(key);
+        string key = ObjectiveManager.Instance != null ? ObjectiveManager.Instance.GetObjectiveKey() : "system";
+        if (NotificationManager.Instance != null) SendEmailForObjective(key);
         NotificationBadgeShow();
 
         StartCoroutine(NotificationRoutine(message));
@@ -106,6 +126,8 @@ public class NotificationManager : MonoBehaviour
 
     private void SendEmailForObjective(string key)
     {
+        if (EmailManager.Instance == null) return;
+        
         switch (key)
         {
             case "train":
@@ -127,7 +149,6 @@ public class NotificationManager : MonoBehaviour
                 );
                 break;
 
-            /*
             case "therapist":
                 EmailManager.Instance.AddEmail(
                     "Dr. Levin",
@@ -137,8 +158,16 @@ public class NotificationManager : MonoBehaviour
                     "Take care, \nDr. Levin"
                 );
                 break;
-            */
-
+            
+            case "home":
+                EmailManager.Instance.AddEmail(
+                    "System",
+                    "Return Home",
+                    "You've completed your tasks for today.\n" +
+                    "Head back home and rest."
+                );
+                break;
+                /*
             case "library":
                 EmailManager.Instance.AddEmail(
                     "City Library",
@@ -149,12 +178,14 @@ public class NotificationManager : MonoBehaviour
                     "And don't forget to return the last books you took!"
                 );
                 break;
+                */
 
             default:
                 EmailManager.Instance.AddEmail(
                     "System",
                     "New Objective",
-                    ObjectiveManager.Instance.GetObjective()
+                    ObjectiveManager.Instance != null ?
+                    ObjectiveManager.Instance.GetObjective() : "New objective"
                 ); 
                 break;
         }
@@ -177,9 +208,15 @@ public class NotificationManager : MonoBehaviour
         if (hasUnreadNotification) NotificationBadgeHide();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HidePopupImmediatly()
     {
-        
+        if (popupCanvasGroup)
+        {
+            StopAllCoroutines();
+            popupCanvasGroup.alpha = 0f;
+            popupCanvasGroup.gameObject.SetActive(false);
+            isShowing = false;
+        }
     }
+
 }

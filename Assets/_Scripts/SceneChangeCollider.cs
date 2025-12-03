@@ -22,18 +22,21 @@ public class SceneChangeCollider : MonoBehaviour
     [SerializeField] private float spawnOffset = 1.5f;
     [SerializeField] private float heightOffset = 0.5f;
 
-    [Header("Time of Day Settings")]
-    [SerializeField] private Light directionalLight;
-    [SerializeField] private float sunRotationPerMinute = 30f;
+    //[Header("Time of Day Settings")] // Disabled Mechanic (Scrapped)
+    //[SerializeField] private Light directionalLight;
+    //[SerializeField] private float sunRotationPerMinute = 30f;
 
     [Header("Fade Transition Settings")]
     [SerializeField] private CanvasGroup fadeCanvas;
     [SerializeField] private float fadeDuration = 1.0f;
 
+    [Header("Saving")]
+    [SerializeField] private bool disableSavingInThisScene = false;
+
     private static Vector3 savedSpawnPosition;
     private static Quaternion savedSpawnRotation;
     private static bool spawnPending = false;
-    private static string intendedReturnScene = "";
+    //private static string intendedReturnScene = "";
     //private static bool comingFromLevel = false;
     private static float suppressedUntil = 0f;
 
@@ -81,6 +84,13 @@ public class SceneChangeCollider : MonoBehaviour
         if (spawnPending && SceneManager.GetActiveScene().name == returnSceneName)
         {
             MovePlayerToSavedSpawn();
+            
+            if (ObjectiveManager.Instance != null && ObjectiveManager.Instance.HasNewObjective)
+            {
+                NotificationManager.Instance.TriggerNotification("You got mail - check your phone.");
+                ObjectiveManager.Instance.AssignRandomObjective();
+            }
+            
             spawnPending = false;
 
             float now = Time.realtimeSinceStartup;
@@ -111,7 +121,7 @@ public class SceneChangeCollider : MonoBehaviour
             fadeCanvas.gameObject.SetActive(true);
             StartCoroutine(FadeIn());
         }
-            
+
         //lastSceneName = SceneManager.GetActiveScene().name;
 
         /*
@@ -180,7 +190,8 @@ public class SceneChangeCollider : MonoBehaviour
 
         string currentScene = SceneManager.GetActiveScene().name;
 
-        bool skipSavingBecausePending = spawnPending;
+        //bool skipSavingBecausePending = spawnPending;
+        bool isColliderInReturnScene = currentScene == returnSceneName;
 
         /*
         if (currentScene == returnSceneName)
@@ -192,7 +203,10 @@ public class SceneChangeCollider : MonoBehaviour
 
         if (!string.IsNullOrEmpty(sceneName))
         {
-            SceneManager.LoadScene(sceneName);
+            if (fadeCanvas) 
+                StartCoroutine(FadeAndLoad(sceneName));
+            else
+                SceneManager.LoadScene(sceneName);
         }
   
         /*
@@ -210,34 +224,68 @@ public class SceneChangeCollider : MonoBehaviour
         //savedSpawnPosition = transform.position + transform.forward * spawnOffset;
         //savedSpawnRotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
 
+        /* //Old version of the save position and rotation
         if (!skipSavingBecausePending)
+        {
+            string activeScene = SceneManager.GetActiveScene().name;
+            
+            if (activeScene == "Home")
+            {
+                Debug.Log("[SceneChangeCollider] Skipping spawn save in Home");
+            }
+            else
+            {
+                Vector3 forward = transform.forward;
+                Collider myCollider = GetComponent<Collider>();
+
+                Vector3 frontPoint = myCollider.ClosestPoint(transform.position + forward * 10f);
+                Vector3 spawnPos = frontPoint + forward * spawnOffset + Vector3.up * heightOffset;
+                Quaternion spawnRot = Quaternion.LookRotation(forward, Vector3.up);
+
+                savedSpawnPosition = spawnPos;
+                savedSpawnRotation = spawnRot;
+                spawnPending = true;
+                intendedReturnScene = returnSceneName;
+
+                Debug.Log($"[SceneChangeCollider] Saved spawn pos: {spawnPos} | Collider at: {transform.position}");
+            }
+        }
+        else
+        {
+            Debug.Log($"[SceneChangeCollider] Spawn already pending - not overwriting saved spawn. Collider at {transform.position}");
+        }
+        */
+
+        if (!disableSavingInThisScene && !isColliderInReturnScene && !spawnPending)
         {
             Vector3 forward = transform.forward;
             Collider myCollider = GetComponent<Collider>();
 
             Vector3 frontPoint = myCollider.ClosestPoint(transform.position + forward * 10f);
             Vector3 spawnPos = frontPoint + forward * spawnOffset + Vector3.up * heightOffset;
-            Quaternion spawnRot = Quaternion.LookRotation(forward, Vector3.up);
+            Quaternion spawnRot = Quaternion.LookRotation(-forward, Vector3.up);
 
             savedSpawnPosition = spawnPos;
             savedSpawnRotation = spawnRot;
             spawnPending = true;
-            intendedReturnScene = returnSceneName;
-
+            
             Debug.Log($"[SceneChangeCollider] Saved spawn pos: {spawnPos} | Collider at: {transform.position}");
         }
         else
         {
-            Debug.Log($"[SceneChangeCollider] Spawn already pending - not overwriting saved spawn. Collider at {transform.position}");
+            Debug.Log($"[SceneChangeCollider] Not saving spawn here (scene:{currentScene})");
         }
+
 
         float timeSpent = Time.time - levelStartTime;
 
+        /* //Disabled Time of Day (Scrapped)
         if (directionalLight && SceneManager.GetActiveScene().name != returnSceneName)
         {
             float rotationChange = Mathf.Clamp((timeSpent / 60f) * sunRotationPerMinute, 0f, 90f);
             directionalLight.transform.Rotate(Vector3.right * rotationChange, Space.Self);
         }
+        */
 
         float now = Time.realtimeSinceStartup;
         suppressedUntil = Mathf.Max(suppressedUntil, now + disableDurationOnReturn);

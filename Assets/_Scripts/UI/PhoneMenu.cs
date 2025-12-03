@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections;
+using TMPro;
 
 public class PhoneMenu : MonoBehaviour
 {
@@ -26,16 +27,42 @@ public class PhoneMenu : MonoBehaviour
     [Header("Music System Reference")]
     public ListenToMusic musicSystem;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private bool uiRegistered = false;
+    
+    private TextMeshProUGUI noteText;
+    private TextMeshProUGUI emailText;
+
+    private GameObject notificationPopup;
+    private TextMeshProUGUI notificationText;
+    private GameObject notificationBadge;
+
+    private AudioSource phoneAudio;
+
+    private void Awake()
     {
+        /*
+        if (phoneRoot != null)
+        {
+            phoneRoot.SetActive(false);
+        }
+        */
+
+        isOpen = false;
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    IEnumerator Start()
+    {
+        /*
         if (phoneCanvasGroup)
         {
             phoneCanvasGroup.alpha = 0f;
             phoneCanvasGroup.interactable = false;
             phoneCanvasGroup.blocksRaycasts = false;
         }
-
+        */
+        yield return new WaitForSeconds(0.1f);
+        RegisterPhoneUI();
         HideAllPanels();
         SetCursorLocked(true);
     }
@@ -52,6 +79,7 @@ public class PhoneMenu : MonoBehaviour
             else
             {
                 StartCoroutine(ShowPhone());
+                if (NotificationManager.Instance != null) NotificationManager.Instance.HidePopupImmediatly();
             }
         }
     }
@@ -67,6 +95,8 @@ public class PhoneMenu : MonoBehaviour
         phoneCanvasGroup.gameObject.SetActive(true);
         phoneCanvasGroup.interactable = true;
         phoneCanvasGroup.blocksRaycasts = true;
+
+        RegisterPhoneUI();
 
         float t = 0f;
         while (t < fadeDuration)
@@ -159,5 +189,61 @@ public class PhoneMenu : MonoBehaviour
 
     }
 
+    public void RegisterPhoneUI()
+    {
+        
+        if (uiRegistered) return;
+
+        if (GameObject.Find("Canvas") == null) return;
+
+        Transform phone = GameObject.Find("Canvas").transform;
+        
+        notesPanel = phone.Find("Phone/PhoneMenu/AppPanels/NotesPanel").gameObject;
+        emailPanel = phone.Find("Phone/PhoneMenu/AppPanels/EmailPanel").gameObject;
+        musicPanel = phone.Find("Phone/PhoneMenu/AppPanels/MusicPanel").gameObject;
+
+        noteText = phone.Find("Phone/PhoneMenu/AppPanels/NotesPanel/Note_Text")?.GetComponent<TextMeshProUGUI>();
+        emailText = phone.Find("Phone/PhoneMenu/Email_Box/Mail/Email_Text")?.GetComponent<TextMeshProUGUI>();
+
+        notificationPopup = phone.Find("NotificationPopup").gameObject;
+        notificationText = phone.Find("NotificationPopup/Notification_Text")?.GetComponent<TextMeshProUGUI>();
+
+        notificationBadge = phone.Find("Phone/PhoneMenu/AppGrid/EmailsButton/Notification_Badge")?.gameObject;
+
+        phoneAudio = phone.GetComponent<AudioSource>();
+        if (phoneAudio == null) phoneAudio = phone.gameObject.AddComponent<AudioSource>();
+
+        if (PlayerController.Instance != null)
+        {
+            StressMeter stressMeter = PlayerController.Instance.GetComponent<StressMeter>();
+            if (stressMeter != null)
+            {
+                Transform canvas = GameObject.Find("Canvas").transform;
+                stressMeter.needle = canvas.Find("Needle")?.GetComponent<RectTransform>();
+            }
+        }
+
+        uiRegistered = true;
+
+        /* //old way
+        if (ObjectiveManager.Instance != null)
+        {
+            ObjectiveManager.Instance.notesText = transform.Find("AppPanels/NotesPanel/Note_Text")?.GetComponent<TMP_Text>();
+        }
+
+        if (EmailManager.Instance != null)
+        {
+            EmailManager.Instance.emailListText = transform.Find("Email_Box/Mail/Email_Text")?.GetComponent<TMP_Text>();
+        }
+
+        if (NotificationManager.Instance != null)
+        {
+            NotificationManager.Instance.popupCanvasGroup = transform.Find("NotificationPopup")?.GetComponent<CanvasGroup>();
+            NotificationManager.Instance.popupText = transform.Find("Notification_Text")?.GetComponent<TMP_Text>();
+            NotificationManager.Instance.notificationBadge = transform.Find("AppGrid/EmailsButton/Notification_Badge").gameObject;
+            NotificationManager.Instance.audioSource = transform.Find("Audio Source")?.GetComponent<AudioSource>();
+        }
+        */
+    }
 
 }

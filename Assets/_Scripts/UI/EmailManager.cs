@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class EmailManager : MonoBehaviour
 {
@@ -16,12 +17,47 @@ public class EmailManager : MonoBehaviour
     }
 
     private List<Email> emails = new List<Email>();
+    private static bool created = false; 
 
     private void Awake()
     {
+        //SceneManager.sceneLoaded += OnSceneLoaded;
+        RefreshEmailUI();
+        if (!created)
+        {
+            created = true;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        /*
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+        */
     }
+
+    public void RefreshEmailUI()
+    {
+        if (emailListText == null) return;
+    }
+
+    /*
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RebindUI();
+    }
+
+    private void RebindUI()
+    {
+        emailListText = GameObject.Find("Email_Text")?.GetComponent<TMP_Text>();
+        //RefreshEmailList();
+    }
+    */
 
     public void AddEmail(string sender, string title, string body)
     {
@@ -43,17 +79,5 @@ public class EmailManager : MonoBehaviour
                 $"{mail.body}\n" +
                 "-----------------------------";
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

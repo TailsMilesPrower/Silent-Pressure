@@ -11,6 +11,7 @@ public class PlayNotification : MonoBehaviour
         {
             triggered = true;
             Debug.Log("Trigger entered, sending notification...");
+            ObjectiveManager.Instance.AssignRandomObjective();
             NotificationManager.Instance.TriggerNotification();
         }
     }

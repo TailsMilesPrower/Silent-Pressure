@@ -1,12 +1,37 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MainMenu : MonoBehaviour
 {
     public void startGame()
     {
         //Level01_TrainLevel
-        SceneManager.LoadScene("Town");
+        SceneManager.LoadScene("UI_Root", LoadSceneMode.Additive);
+        StartCoroutine(DelayedLoadHome());
+        /*
+        SceneManager.LoadScene("Home");
+
+        if (PlayerStats.Instance != null)
+        {
+            PlayerStats.Instance.ResetStats();
+        }
+        */
+
+    }
+
+    private IEnumerator DelayedLoadHome()
+    {
+        yield return null;
+
+        GameObject uiRoot = GameObject.Find("UI_Root");
+        if (uiRoot != null) uiRoot.SetActive(true);
+
+        Canvas canvas = FindObjectOfType<Canvas>();
+        if (canvas != null) canvas.gameObject.SetActive(true);
+
+        SceneManager.LoadScene("Home");
+
         if (PlayerStats.Instance != null)
         {
             PlayerStats.Instance.ResetStats();
@@ -34,11 +59,5 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

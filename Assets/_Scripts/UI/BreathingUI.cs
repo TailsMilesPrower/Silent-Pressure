@@ -11,6 +11,15 @@ public class BreathingUI : MonoBehaviour
     public void FadeIn() => StartCoroutine(Fade(1f));
     public void FadeOut() => StartCoroutine(Fade(0f));
 
+    private void Start()
+    {
+        if (canvasGroup)
+        {
+            canvasGroup.alpha = 0f;
+            canvasGroup.gameObject.SetActive(false);
+        }
+    }
+
     private IEnumerator Fade(float target)
     {
         float start = canvasGroup.alpha;
@@ -26,17 +35,5 @@ public class BreathingUI : MonoBehaviour
         canvasGroup.alpha = target;
         canvasGroup.interactable = target > 0.9f;
         canvasGroup.blocksRaycasts = target > 0.9f;
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

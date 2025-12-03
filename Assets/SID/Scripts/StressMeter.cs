@@ -27,18 +27,32 @@ public class StressMeter : MonoBehaviour
     [Header("Game Over Settings")]
     public string gameOverSceneName = "GameOver";
 
+    private void Start()
+    {
+        if (needle == null)
+        {
+            Canvas canvas = FindObjectOfType<Canvas>();
+            if (canvas != null)
+            {
+                needle = canvas.transform.Find("Needle")?.GetComponent<RectTransform>();
+            }
+        }
+    }
+
     void Update()
     {
         // Toggles => ADD / REMOVE 
 
         // Toggles for Testing
         // Toggle stressing with F
+        /*
         if (Keyboard.current.fKey.wasPressedThisFrame)
             stressing = !stressing;
 
         // Toggle calming with Space
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
             calming = !calming;
+        */
 
         // Stress Logic
         // Stressing priority over calming
