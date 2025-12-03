@@ -263,7 +263,7 @@ public class SceneChangeCollider : MonoBehaviour
 
             Vector3 frontPoint = myCollider.ClosestPoint(transform.position + forward * 10f);
             Vector3 spawnPos = frontPoint + forward * spawnOffset + Vector3.up * heightOffset;
-            Quaternion spawnRot = Quaternion.LookRotation(-forward, Vector3.up);
+            Quaternion spawnRot = Quaternion.LookRotation(forward, Vector3.up);
 
             savedSpawnPosition = spawnPos;
             savedSpawnRotation = spawnRot;
