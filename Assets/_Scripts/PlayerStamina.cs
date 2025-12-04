@@ -32,7 +32,6 @@ public class PlayerStamina : MonoBehaviour
                 currentStamina = Mathf.Min(currentStamina, maxStamina);
             }
         }
-        
     }
 
     public void Drain(float deltaTime)
@@ -81,13 +80,10 @@ public class PlayerStamina : MonoBehaviour
         return currentStamina <= 0f;
     }
 
-
     public void ResetStamina()
     {
         currentStamina = maxStamina;
         IsSprinting = false;
         lastSprintTime = -999f;
     }
-
-
 }

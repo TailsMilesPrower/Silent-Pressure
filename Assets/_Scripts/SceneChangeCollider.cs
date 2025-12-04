@@ -50,7 +50,6 @@ public class SceneChangeCollider : MonoBehaviour
     }
     */
 
-
     private void Awake()
     {
         triggerCollider = GetComponent<Collider>();
@@ -74,7 +73,6 @@ public class SceneChangeCollider : MonoBehaviour
         if (triggerCollider != null) triggerCollider.enabled = true;
     }
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -87,12 +85,11 @@ public class SceneChangeCollider : MonoBehaviour
             
             if (ObjectiveManager.Instance != null && ObjectiveManager.Instance.HasNewObjective)
             {
-                NotificationManager.Instance.TriggerNotification("You got mail - check your phone.");
-                ObjectiveManager.Instance.AssignRandomObjective();
+                //Disabled feature where you get mail that says return home or go to the therapist
+                //NotificationManager.Instance.TriggerNotification("You got mail - check your phone.");
+                //ObjectiveManager.Instance.AssignRandomObjective();
             }
             
-            spawnPending = false;
-
             float now = Time.realtimeSinceStartup;
             suppressedUntil = Mathf.Max(suppressedUntil, now + disableDurationOnReturn);
 
@@ -112,7 +109,8 @@ public class SceneChangeCollider : MonoBehaviour
             */
 
             //StartCoroutine(DisableColliderTemporarily());
-            
+
+            spawnPending = false;
             //comingFromLevel = false;
         }
 
@@ -256,7 +254,7 @@ public class SceneChangeCollider : MonoBehaviour
         }
         */
 
-        if (!disableSavingInThisScene && !isColliderInReturnScene && !spawnPending)
+        if (!disableSavingInThisScene && isColliderInReturnScene && !spawnPending)
         {
             Vector3 forward = transform.forward;
             Collider myCollider = GetComponent<Collider>();
@@ -275,7 +273,6 @@ public class SceneChangeCollider : MonoBehaviour
         {
             Debug.Log($"[SceneChangeCollider] Not saving spawn here (scene:{currentScene})");
         }
-
 
         float timeSpent = Time.time - levelStartTime;
 
@@ -325,7 +322,6 @@ public class SceneChangeCollider : MonoBehaviour
 
     }
 
-
     private IEnumerator FadeIn()
     {
         if (fadeCanvas == null) yield break;
@@ -346,7 +342,6 @@ public class SceneChangeCollider : MonoBehaviour
         fadeCanvas.blocksRaycasts = false;
     }
 
-
     /*
     private IEnumerator Fade(float targetAlpha)
     {
@@ -364,5 +359,4 @@ public class SceneChangeCollider : MonoBehaviour
         fadeCanvas.alpha = targetAlpha;
     }
     */
-
 }

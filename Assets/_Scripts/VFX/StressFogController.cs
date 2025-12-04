@@ -55,7 +55,6 @@ public class StressFogController : MonoBehaviour
         RenderSettings.fogStartDistance = calmFogStart;
         RenderSettings .fogEndDistance = calmFogEnd;
         initialized = true;
-
     }
 
     // Update is called once per frame
@@ -85,6 +84,5 @@ public class StressFogController : MonoBehaviour
             RenderSettings.fogDensity += pulse * 0.005f;
         }
         */
-
     }
 }

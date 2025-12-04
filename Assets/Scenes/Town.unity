@@ -1709,122 +1709,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165748480}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &166065814
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1676239289300375360, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_Name
-      value: StressReliefManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1676239289300375360, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: aPrompt
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: dPrompt
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: breathingUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: progressBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: stressMeter
-      value: 
-      objectReference: {fileID: 800671414}
-    - target: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 800671420}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -16.84129
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -286.0708
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503195570351961262, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900060698412164086, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900060698412164086, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: stressMeter
-      value: 
-      objectReference: {fileID: 800671414}
-    - target: {fileID: 5900060698412164086, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: nowPlayingText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900060698412164086, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: nowPlayingGroup
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900060698412164086, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-      propertyPath: songProgressFill
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
---- !u!114 &166065815 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3038548499425899152, guid: b05a664931588a14ca0abaaded1fa1f7, type: 3}
-  m_PrefabInstance: {fileID: 166065814}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fb2daf8303c34a4882efbaec10d1bb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreathingMechanic
 --- !u!1 &167262261
 GameObject:
   m_ObjectHideFlags: 0
@@ -11929,17 +11813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8696d0790658b4088dc16d91728840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StressMeter
---- !u!114 &800671420 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1263673661184557171, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
-  m_PrefabInstance: {fileID: 1309570202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4712979b659ec1d4ba1e21705609fce1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &804271650
 GameObject:
   m_ObjectHideFlags: 0
@@ -21780,10 +21653,14 @@ PrefabInstance:
     - target: {fileID: 949872578585123372, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
       propertyPath: breathingMechanic
       value: 
-      objectReference: {fileID: 166065815}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087292230894769485, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3118402980049478363, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 19.3
       objectReference: {fileID: 0}
     - target: {fileID: 3118402980049478363, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21791,7 +21668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3118402980049478363, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -450
+      value: -178.7
       objectReference: {fileID: 0}
     - target: {fileID: 3118402980049478363, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21819,6 +21696,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3118402980049478363, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553513766081048260, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4732714591460011602, guid: 16b4f8baf802bca45a822a174da3fb9e, type: 3}
@@ -34866,7 +34747,6 @@ SceneRoots:
   - {fileID: 311284016}
   - {fileID: 515524878}
   - {fileID: 1325919333}
-  - {fileID: 166065814}
   - {fileID: 1986880226}
   - {fileID: 235482646}
   - {fileID: 2095269232}

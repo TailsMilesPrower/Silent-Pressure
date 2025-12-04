@@ -41,7 +41,7 @@ public class BreathingMechanic : MonoBehaviour
 #else
         isAndroid = false;
 #endif
-
+        S
         if (progressBar)
         {
             progressBar.type = Image.Type.Filled;
@@ -95,7 +95,6 @@ public class BreathingMechanic : MonoBehaviour
             progressBar.fillAmount = Mathf.Clamp01((float)currentPresses / (float)requiredPresses);
         }
 
-
         /* //Old method
         if (Keyboard.current.bKey.wasPressedThisFrame && !active)
         {
@@ -147,7 +146,6 @@ public class BreathingMechanic : MonoBehaviour
 
         //Cursor.lockState = CursorLockMode.None;
         //Cursor.visible = true;
-
     }
 
     void HandleBreathingInput()
@@ -169,7 +167,6 @@ public class BreathingMechanic : MonoBehaviour
                 countedThisFrame = true;
             }
         }
-
 
         if (isAndroid && TCKInput.isActive && !string.IsNullOrEmpty(touchButtonName))
         {
@@ -218,7 +215,6 @@ public class BreathingMechanic : MonoBehaviour
             EndBreathing(true);
         }
         */
-
     }
 
     void EndBreathing(bool success)
@@ -293,5 +289,4 @@ public class BreathingMechanic : MonoBehaviour
             EndBreathing(false);
         }
     }
-
 }

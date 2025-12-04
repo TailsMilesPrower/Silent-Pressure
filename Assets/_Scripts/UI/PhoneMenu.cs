@@ -46,7 +46,6 @@ public class PhoneMenu : MonoBehaviour
             phoneRoot.SetActive(false);
         }
         */
-
         isOpen = false;
     }
 
@@ -112,7 +111,6 @@ public class PhoneMenu : MonoBehaviour
         phoneCanvasGroup.transform.localScale = shownScale;
 
         isAnimating = false;
-        
     }
 
     private IEnumerator HidePhone()
@@ -135,7 +133,7 @@ public class PhoneMenu : MonoBehaviour
             phoneCanvasGroup.transform.localScale = Vector3.Lerp(shownScale, hiddenScale, p);
             yield return null;
         }
-
+        
         phoneCanvasGroup.alpha = 0f;
         phoneCanvasGroup.transform.localScale = hiddenScale;
         phoneCanvasGroup.gameObject.SetActive(false);
@@ -186,12 +184,10 @@ public class PhoneMenu : MonoBehaviour
             Cursor.lockState= CursorLockMode.None;
             Cursor.visible = true;
         }    
-
     }
 
     public void RegisterPhoneUI()
     {
-        
         if (uiRegistered) return;
 
         if (GameObject.Find("Canvas") == null) return;
@@ -245,5 +241,4 @@ public class PhoneMenu : MonoBehaviour
         }
         */
     }
-
 }

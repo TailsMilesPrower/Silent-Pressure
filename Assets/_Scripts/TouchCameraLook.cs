@@ -76,7 +76,6 @@ public class TouchCameraLook : MonoBehaviour //, IDragHandler, IPointerDownHandl
             //usingTouch = false;
             activeTouchId = -1;
         }
-
     }
 
     void ApplyTouchLook(Vector2 delta)
@@ -96,7 +95,6 @@ public class TouchCameraLook : MonoBehaviour //, IDragHandler, IPointerDownHandl
         if (joystickZone ==  null) return false;
         return RectTransformUtility.RectangleContainsScreenPoint(joystickZone, screenPos, null);
     }
-
 
     void StartTouchMode()
     {
@@ -142,5 +140,4 @@ public class TouchCameraLook : MonoBehaviour //, IDragHandler, IPointerDownHandl
     {
         usingTouch = false;
     }
-
 }

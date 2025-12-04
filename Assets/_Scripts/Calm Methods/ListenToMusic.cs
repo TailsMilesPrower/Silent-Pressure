@@ -51,7 +51,6 @@ public class ListenToMusic : MonoBehaviour
         }
 
         if (songProgressFill) songProgressFill.fillAmount = 0f;
-
     }
 
     // Update is called once per frame
@@ -119,7 +118,6 @@ public class ListenToMusic : MonoBehaviour
             return;
         }
         
-
         if (selected == null)
         {
             Debug.LogWarning("Selected song is missing!");
@@ -187,7 +185,6 @@ public class ListenToMusic : MonoBehaviour
 
         if (nowPlayingRoutine != null) StopCoroutine(nowPlayingRoutine);
         nowPlayingRoutine = StartCoroutine(FadeOutNowPlaying());
-
     }
 
     private void ShowNowPlaying(string text)
@@ -199,7 +196,6 @@ public class ListenToMusic : MonoBehaviour
         if (nowPlayingRoutine != null) StopCoroutine(nowPlayingRoutine);
 
         nowPlayingRoutine = StartCoroutine(AnimatorNowPlaying());
-
     }
 
     private IEnumerator AnimatorNowPlaying()
@@ -220,7 +216,6 @@ public class ListenToMusic : MonoBehaviour
 
         nowPlayingGroup.alpha = 1f;
         //yield return new WaitForSeconds(uiVisibleTime);
-
     }
 
     private IEnumerator FadeOutNowPlaying()
@@ -238,5 +233,4 @@ public class ListenToMusic : MonoBehaviour
         nowPlayingGroup.alpha = 0f;
         //nowPlayingGroup.transform.localPosition = hiddenPos;
     }
-
 }

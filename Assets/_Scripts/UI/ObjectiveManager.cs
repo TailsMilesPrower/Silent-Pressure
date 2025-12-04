@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-
 public class ObjectiveManager : MonoBehaviour
 {
     public static ObjectiveManager Instance;
@@ -29,8 +28,6 @@ public class ObjectiveManager : MonoBehaviour
     };
     */
 
-
-
     /* // Old Awake
     private void Awake()
     {
@@ -46,7 +43,6 @@ public class ObjectiveManager : MonoBehaviour
         }
     }
     */
-
 
     private (string key, string text)[] possibleObjectives =
     {
@@ -133,7 +129,7 @@ public class ObjectiveManager : MonoBehaviour
         return currentKey;
     }
 
-    public void AdvanceStoryObjective()
+    public void AdvanceStoryObjective() //This is the feature after finishing a level
     {
         progressionIndex++;
 
@@ -149,7 +145,7 @@ public class ObjectiveManager : MonoBehaviour
         }
         else
         {
-            AssignRandomObjective();
+            //AssignRandomObjective();
         }
 
         HasNewObjective = true;
@@ -205,7 +201,6 @@ public class ObjectiveManager : MonoBehaviour
         UpdateNotesUI();
     }
 
-    
     public void UpdateNotesUI()
     {
         if (notesText != null) notesText.text = currentObjective;

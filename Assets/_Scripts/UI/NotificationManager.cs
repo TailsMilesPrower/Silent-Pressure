@@ -69,7 +69,7 @@ public class NotificationManager : MonoBehaviour
         }
     }
 
-    public void TriggerNotification(string message = "Press TAB to open your phone")
+    public void TriggerNotification(string message = "Press TAB")
     {
         //string objective = ObjectiveManager.Instance.GetObjective();
         //string email = $"New Objective Received:\n\n{objective}";
@@ -218,5 +218,4 @@ public class NotificationManager : MonoBehaviour
             isShowing = false;
         }
     }
-
 }

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class EmailManager : MonoBehaviour
 {
     public static EmailManager Instance;
-
     public TMP_Text emailListText;
 
     private class Email

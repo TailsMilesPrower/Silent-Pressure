@@ -29,9 +29,7 @@ public class PlayerStats : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
         ResetStats();
-
     }
 
     public void ResetStats()
@@ -59,17 +57,5 @@ public class PlayerStats : MonoBehaviour
             default: Debug.LogWarning("Unknown upgrade type: " + upgradeType);
                 break;
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

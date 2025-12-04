@@ -169,5 +169,4 @@ public class StressVisualEffects : MonoBehaviour
             cameraNoise.FrequencyGain = Mathf.Lerp(cameraNoise.FrequencyGain, 0f, Time.deltaTime * smoothSpeed);
         }
     }
-
 }

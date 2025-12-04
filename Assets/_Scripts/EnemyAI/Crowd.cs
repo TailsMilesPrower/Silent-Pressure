@@ -30,7 +30,6 @@ public class Crowd : MonoBehaviour
         //GetComponent<Animator>().SetInteger("Mode", 1);
 
         IgnorePlayerCollision();
-
         FindTarget();
         //MoveToTarget();
     }
@@ -81,7 +80,6 @@ public class Crowd : MonoBehaviour
         {
             StartCoroutine(ChangeTargetAfterDelay());
         }
-
     }
 
     IEnumerator ChangeTargetAfterDelay()
@@ -197,8 +195,5 @@ public class Crowd : MonoBehaviour
         {
             Physics.IgnoreCollision(myCollider, playerCollider, true);
         }
-
     } 
-
-
 }

@@ -166,8 +166,6 @@ public class PlayerController : MonoBehaviour
             StopCrouch();
         }
 
-        
-
         // Jumping
         if (Input.GetKey(KeyCode.Space) && readyToJump && grounded)
         {
@@ -176,7 +174,6 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
-
 
     private void MovePlayer()
     {
@@ -348,5 +345,4 @@ public class PlayerController : MonoBehaviour
         float newFOV = Mathf.SmoothDamp(playerCamera.fieldOfView, targetFOV, ref fovVelocity, fovSmoothTime);
         playerCamera.fieldOfView = newFOV;
     }
-
 }

@@ -681,6 +681,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2849818000388795056, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877271115244119389, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_text
+      value: Press TAB
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877271115244119389, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877271115244119389, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 3067754648992572538, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -733,6 +749,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -215
       objectReference: {fileID: 0}
+    - target: {fileID: 4280969526658001575, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280969526658001575, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280969526658001575, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280969526658001575, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280969526658001575, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280969526658001575, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280969526658001575, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -267
+      objectReference: {fileID: 0}
     - target: {fileID: 4412089450228697884, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -756,6 +800,10 @@ PrefabInstance:
     - target: {fileID: 5585942583292874657, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlaySong
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992188827821261119, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8002405151310401768, guid: bd6d1dc601b27ee478a97d628e27e19c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -981,7 +1029,6 @@ MonoBehaviour:
   stressReductionLong: 4
   shortListeningTime: 15
   longListeningTime: 30
-  quickMusicKey: 109
   nowPlayingGroup: {fileID: 965024181}
   nowPlayingText: {fileID: 965024180}
   songProgressFill: {fileID: 965024175}

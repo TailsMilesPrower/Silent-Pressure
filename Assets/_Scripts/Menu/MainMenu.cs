@@ -17,7 +17,6 @@ public class MainMenu : MonoBehaviour
             PlayerStats.Instance.ResetStats();
         }
         */
-
     }
 
     private IEnumerator DelayedLoadHome()
@@ -36,7 +35,6 @@ public class MainMenu : MonoBehaviour
         {
             PlayerStats.Instance.ResetStats();
         }
-
     }
 
     public void exitGame()

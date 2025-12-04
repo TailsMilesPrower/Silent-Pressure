@@ -92,5 +92,4 @@ public class StaminaUI : MonoBehaviour
         canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 0f, Time.deltaTime * fadeOutSpeed);
     }
     */
-
 }

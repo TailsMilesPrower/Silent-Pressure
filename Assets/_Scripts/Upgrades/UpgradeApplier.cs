@@ -32,12 +32,5 @@ public class UpgradeApplier : MonoBehaviour
             stamina.maxStamina = PlayerStats.Instance.staminaLimit;
             stamina.currentStamina = Mathf.Min(stamina.currentStamina, stamina.maxStamina);
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
