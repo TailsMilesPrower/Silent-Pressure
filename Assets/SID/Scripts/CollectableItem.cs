@@ -3,7 +3,7 @@ using UnityEngine;
 public class CollectibleItem : MonoBehaviour
 {
     public StoreCollectItems manager;
-    public float interactDistance = 3f; // how close the player must be
+    public float interactDistance = 3f;
 
     private Transform player;
 
@@ -20,11 +20,7 @@ public class CollectibleItem : MonoBehaviour
 
         if (dist <= interactDistance && Input.GetKeyDown(KeyCode.F))
         {
-            // Notify the manager
-            if (manager != null)
-                manager.ItemCollected();
-
-            // Destroy this collectible
+            if (manager != null)manager.ItemCollected();
             Destroy(gameObject);
         }
     }

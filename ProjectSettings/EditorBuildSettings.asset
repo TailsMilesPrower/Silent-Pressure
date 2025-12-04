@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level03_Library.unity
     guid: b09d8c388c388b547be76eb3925bbe13
   - enabled: 0
-    path: Assets/Scenes/ComingSoon.unity
+    path: Assets/Scenes/_Scrapped Scenes/ComingSoon.unity
     guid: 657a9e337b0fde74dbf457e3d20a509f
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: 4c652d21448c13c4d9ebd86231437d63
   - enabled: 0
-    path: Assets/Scenes/Upgrades.unity
+    path: Assets/Scenes/_Scrapped Scenes/Upgrades.unity
     guid: b5a6d4031ac7c1b488189bf6d7fcb710
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

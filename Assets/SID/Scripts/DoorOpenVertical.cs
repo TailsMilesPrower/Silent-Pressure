@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+// AI MADE. For some reason my version never worked right, so I had to ask AI for help.
 public class DoorOpenVertical : MonoBehaviour
 {
     [Header("Door Movement")]

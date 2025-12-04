@@ -15,32 +15,21 @@ public class CarSpawn : MonoBehaviour
         while (true)
         {
             GameObject car = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-
-            // Randomize the material on this specific car
             RandomizeCarMaterial(car);
-
             yield return new WaitForSeconds(Random.Range(2f, 5f));
         }
     }
 
     private void RandomizeCarMaterial(GameObject car)
     {
-        // Get renderer (assuming the car has a MeshRenderer)
         Renderer rend = car.GetComponentInChildren<Renderer>();
-
         if (rend != null)
         {
-            // This creates a *unique* runtime material instance
             Material mat = rend.material;
 
-            // Randomize the color
-            mat.color = new Color(
-                Random.value,        // R
-                Random.value,        // G
-                Random.value         // B
-            );
+            mat.color = new Color(Random.value, Random.value,Random.value);
 
-            // Optional: random metallic and smoothness (if using Standard shader)
+            // An attempt was made but failed. Nothing changes but nothing breaks so I leave it here.
             if (mat.HasProperty("_Metallic"))
                 mat.SetFloat("_Metallic", Random.Range(0f, 1f));
 

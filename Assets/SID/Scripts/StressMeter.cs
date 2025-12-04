@@ -9,7 +9,7 @@ public class StressMeter : MonoBehaviour
     [Header("Needle UI")]
     public RectTransform needle;
 
-    // Anxiety values
+    //Anxiety values
     [Header("Settings")]
     [Range(0, 100)] public float anxiety = 0f;
     public float anxietyIncreaseRate = 10f;
@@ -20,9 +20,9 @@ public class StressMeter : MonoBehaviour
     public float maxAngle = -90f;
 
     [Header("Stress States")]
-    public bool stressing = false;  // Increase Stress
-    public bool calming = false;    // Decrese Stress
-    public bool stable = false;     // Maybe will use it for something later
+    public bool stressing = false; //Increase Stress
+    public bool calming = false; //Decrese Stress
+    public bool stable = false; //Maybe will use it for something later
 
     [Header("Game Over Settings")]
     public string gameOverSceneName = "GameOver";
@@ -41,10 +41,10 @@ public class StressMeter : MonoBehaviour
 
     void Update()
     {
-        // Toggles => ADD / REMOVE 
+        //Toggles => ADD / REMOVE 
 
-        // Toggles for Testing
-        // Toggle stressing with F
+        //Toggles for Testing
+        //Toggle stressing with F
         /*
         if (Keyboard.current.fKey.wasPressedThisFrame)
             stressing = !stressing;
@@ -54,12 +54,12 @@ public class StressMeter : MonoBehaviour
             calming = !calming;
         */
 
-        // Stress Logic
-        // Stressing priority over calming
-        // stressing = true & calming = true   => stress +
-        // stressing = true & calming = false  => stress +
-        // stressing = false & calming = true  => stress -
-        // stressing = false & calming = false => no change.
+        //Stress Logic
+        //Stressing priority over calming
+        //stressing = true & calming = true   => stress +
+        //stressing = true & calming = false  => stress +
+        //stressing = false & calming = true  => stress -
+        //stressing = false & calming = false => no change.
         if (stressing)
         {
             anxiety += anxietyIncreaseRate * Time.deltaTime;
@@ -71,7 +71,7 @@ public class StressMeter : MonoBehaviour
 
         anxiety = Mathf.Clamp(anxiety, 0f, 100f);
 
-        // Needle Rotation
+        //Needle Rotation
         float t = anxiety / 100f;
         float angle = Mathf.Lerp(minAngle, maxAngle, t);
         needle.localRotation = Quaternion.Euler(0, 0, angle);

@@ -1,15 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
+// AI MADE. For some reason my version never worked right, so I had to ask AI for help.
 public class DoorOpen : MonoBehaviour
 {
     [Header("Door Movement Settings")]
-    public float moveDistance = 2f;     // How far the door moves on X axis
-    public float moveSpeed = 2f;        // Speed of opening/closing
-    public float closeDelay = 3f;       // Time to wait before closing
+    public float moveDistance = 2f;
+    public float moveSpeed = 2f;
+    public float closeDelay = 3f;
 
     [Header("Trigger Setup")]
-    public Collider triggerZone;        // Drag your trigger collider here
+    public Collider triggerZone;
 
     private bool playerInside = false;
     private Vector3 closedPosition;

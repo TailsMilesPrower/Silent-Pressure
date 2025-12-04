@@ -3,7 +3,7 @@ using UnityEngine;
 public class StoreCollectItems: MonoBehaviour
 {
     [Header("Objects to collect")]
-    public CollectibleItem[] collectibles; // assign your 6 collectibles here
+    public CollectibleItem[] collectibles;
 
     [Header("Object to enable when all collected")]
     public GameObject objectToEnable;
@@ -23,7 +23,6 @@ public class StoreCollectItems: MonoBehaviour
 
         if (collectedCount >= collectibles.Length)
         {
-            // All collected!
             objectToEnable.SetActive(true);
         }
     }
