@@ -179,6 +179,7 @@ public class PhoneMenu : MonoBehaviour
         emailPanel?.SetActive(false);
     }
 
+
     private void SetCursorLocked(bool locked)
     {
         if (locked)
@@ -190,7 +191,21 @@ public class PhoneMenu : MonoBehaviour
         {
             Cursor.lockState= CursorLockMode.None;
             Cursor.visible = true;
-        }    
+
+#if UNITY_WEBGL && !UNITY_EDITOR //&& !UNITY_EDITOR_WIN
+            StartCoroutine(WebGLUnlockCursor());
+#endif
+        }
+    }
+
+    private IEnumerator WebGLUnlockCursor()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        yield return null;
+        Cursor.lockState = Cursor.LockMode.None;
+        Cursor.visible = true;
+#endif
+        yield break;
     }
 
     public void RegisterPhoneUI()

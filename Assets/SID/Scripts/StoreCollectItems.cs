@@ -24,6 +24,8 @@ public class StoreCollectItems: MonoBehaviour
         if (collectedCount >= collectibles.Length)
         {
             objectToEnable.SetActive(true);
+            BoxCollider box = objectToEnable.GetComponent<BoxCollider>();
+            if (box != null) box.enabled = true;
         }
     }
 }
