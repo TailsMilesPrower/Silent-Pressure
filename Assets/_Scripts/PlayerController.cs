@@ -318,7 +318,8 @@ public class PlayerController : MonoBehaviour
         }
         */
 
-        rotationX -= Input.GetAxis("Mouse Y") * lookSensitivity;
+        //rotationX -= Input.GetAxis("Mouse Y") * lookSensitivity;
+        rotationX -= my * lookSensitivity;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
 

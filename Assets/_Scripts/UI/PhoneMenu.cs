@@ -20,6 +20,7 @@ public class PhoneMenu : MonoBehaviour
 
     [Header("Player Control Reference")]
     public PlayerController playerController;
+    public UnifiedInput unifiedInput;
 
     private bool isOpen = false;
     private bool isAnimating = false;
@@ -37,6 +38,7 @@ public class PhoneMenu : MonoBehaviour
     private GameObject notificationBadge;
 
     private AudioSource phoneAudio;
+    private GameObject smallPhoneIcon;
 
     private void Awake()
     {
@@ -87,8 +89,10 @@ public class PhoneMenu : MonoBehaviour
     {
         isAnimating = true;
         isOpen = true;
+        if (smallPhoneIcon) smallPhoneIcon.SetActive(false);
 
         if (playerController) playerController.enabled = false;
+        if (unifiedInput) unifiedInput.inputBlocked = true;
         SetCursorLocked(false);
 
         phoneCanvasGroup.gameObject.SetActive(true);
@@ -117,8 +121,11 @@ public class PhoneMenu : MonoBehaviour
     {
         isAnimating = true;
         isOpen = false;
+        if (smallPhoneIcon) smallPhoneIcon.SetActive(true);
 
         if (playerController) playerController.enabled = true;
+        if (unifiedInput) unifiedInput.inputBlocked = false;
+
         SetCursorLocked(true);
 
         phoneCanvasGroup.interactable = false;
@@ -205,6 +212,7 @@ public class PhoneMenu : MonoBehaviour
         notificationText = phone.Find("NotificationPopup/Notification_Text")?.GetComponent<TextMeshProUGUI>();
 
         notificationBadge = phone.Find("Phone/PhoneMenu/AppGrid/EmailsButton/Notification_Badge")?.gameObject;
+        smallPhoneIcon = phone.Find("Small_Phone")?.gameObject;
 
         phoneAudio = phone.GetComponent<AudioSource>();
         if (phoneAudio == null) phoneAudio = phone.gameObject.AddComponent<AudioSource>();
@@ -216,6 +224,18 @@ public class PhoneMenu : MonoBehaviour
             {
                 Transform canvas = GameObject.Find("Canvas").transform;
                 stressMeter.needle = canvas.Find("Needle")?.GetComponent<RectTransform>();
+            }
+        }
+
+        if (unifiedInput == null)
+        {
+            if (PlayerController.Instance != null)
+            {
+                unifiedInput = PlayerController.Instance.GetComponent<UnifiedInput>();
+            }
+            else
+            {
+                unifiedInput = FindObjectOfType<UnifiedInput>();
             }
         }
 

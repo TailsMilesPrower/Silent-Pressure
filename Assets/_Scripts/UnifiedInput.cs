@@ -26,15 +26,25 @@ public class UnifiedInput : MonoBehaviour
     public bool button2Down;
     public bool button2Up;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [HideInInspector]
+    public bool inputBlocked = false;
 
     // Update is called once per frame
     void Update()
     {
+        if (inputBlocked)
+        {
+            horizontal = 0f;
+            vertical = 0f;
+            mouseX = 0f;
+            mouseY = 0f;
+
+            button1Pressed = button1Down = button1Up = false;
+            button2Pressed = button2Down = button2Up = false;
+
+            return;
+        }
+        
         float h = 0f;
         float v = 0f;
         float mx = 0f;
@@ -119,8 +129,17 @@ public class UnifiedInput : MonoBehaviour
 
         horizontal = Mathf.Clamp(h, -1f, 1f);
         vertical = Mathf.Clamp(v, -1f, 1f);
-        mouseX = mx;
-        mouseY = my;
+
+        if (inputBlocked)
+        {
+            mouseX = 0f;
+            mouseY = 0f;
+        }
+        else
+        {
+            mouseX = mx;
+            mouseY = my;
+        }
 
         //if (unifiedInput.button1Pressed) player.Crouch();
         

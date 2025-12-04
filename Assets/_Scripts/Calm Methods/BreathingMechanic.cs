@@ -41,7 +41,7 @@ public class BreathingMechanic : MonoBehaviour
 #else
         isAndroid = false;
 #endif
-        S
+        
         if (progressBar)
         {
             progressBar.type = Image.Type.Filled;

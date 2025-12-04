@@ -233,4 +233,9 @@ public class ListenToMusic : MonoBehaviour
         nowPlayingGroup.alpha = 0f;
         //nowPlayingGroup.transform.localPosition = hiddenPos;
     }
+
+    public bool IsSongPlaying()
+    {
+        return audioSource != null && audioSource.isPlaying;
+    }
 }
