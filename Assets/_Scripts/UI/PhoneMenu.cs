@@ -73,6 +73,8 @@ public class PhoneMenu : MonoBehaviour
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame && !isAnimating)
         {
+            RefreshPlayerRefrences();
+
             if (isOpen)
             {
                 StartCoroutine(HidePhone());
@@ -85,6 +87,24 @@ public class PhoneMenu : MonoBehaviour
         }
     }
 
+    private void RefreshPlayerRefrences()
+    {
+        if (PlayerController.Instance != null) playerController = PlayerController.Instance;
+
+        if (unifiedInput == null || unifiedInput != PlayerController.Instance?.GetComponent<UnifiedInput>())
+        {
+            if (PlayerController.Instance != null)
+            {
+                unifiedInput = PlayerController.Instance.GetComponent<UnifiedInput>();
+            }
+            else
+            {
+                unifiedInput = FindObjectOfType<UnifiedInput>();
+            }
+        }
+    }
+
+
     private IEnumerator ShowPhone()
     {
         isAnimating = true;
@@ -94,6 +114,10 @@ public class PhoneMenu : MonoBehaviour
         if (playerController) playerController.enabled = false;
         if (unifiedInput) unifiedInput.inputBlocked = true;
         SetCursorLocked(false);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        StartCoroutine(KeepCursorVisibleWhilePhoneOpen());
+#endif
 
         phoneCanvasGroup.gameObject.SetActive(true);
         phoneCanvasGroup.interactable = true;
@@ -189,7 +213,7 @@ public class PhoneMenu : MonoBehaviour
         }
         else
         {
-            Cursor.lockState= CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
 #if UNITY_WEBGL && !UNITY_EDITOR //&& !UNITY_EDITOR_WIN
@@ -202,11 +226,31 @@ public class PhoneMenu : MonoBehaviour
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         yield return null;
-        Cursor.lockState = Cursor.LockMode.None;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 #endif
         yield break;
     }
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+    private void OnMouseDown()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+#endif
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+    private IEnumerator KeepCursorVisibleWhilePhoneOpen()
+    {
+        while (isOpen)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            yield return null;
+        }
+    }
+#endif
 
     public void RegisterPhoneUI()
     {
