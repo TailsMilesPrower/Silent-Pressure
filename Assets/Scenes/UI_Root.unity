@@ -1152,9 +1152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ListenToMusic
   audioSource: {fileID: 2022289120}
-  song1: {fileID: 8300000, guid: 542355c5fd8fa5644b0cb9269c7fcfe6, type: 3}
-  song2: {fileID: 8300000, guid: 36e8d49d93382724db095adb55dfead3, type: 3}
-  song3: {fileID: 0}
+  song1: {fileID: 8300000, guid: 1bdab693d7e37784d8ea74a2674db20d, type: 3}
+  song2: {fileID: 8300000, guid: 789dcad9f53565d4f9d261e5b910aa80, type: 3}
+  song3: {fileID: 8300000, guid: 9242fb8448c8cd949a06cc095875b7d7, type: 3}
   stressMeter: {fileID: 0}
   stressReductionShort: 2
   stressReductionLong: 4
